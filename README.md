@@ -18,10 +18,17 @@ BIG FISH Payment Gateway is available at packagist.org, so you can use composer 
 ```yml
 {
     "require": {
-        "bigfish/paymentgateway": "3.0"
+        "bigfish/payment-gateway-php7-sdk": "3.*"
     }
 }
 ```
+
+or run
+
+```sh
+composer require bigfish/payment-gateway-php7-sdk
+```
+
 ## Technical documentation
 
 https://docs.paymentgateway.hu/
