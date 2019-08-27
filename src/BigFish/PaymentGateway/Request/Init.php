@@ -109,12 +109,12 @@ class Init extends InitAbstract
 	}
 
 	/**
-	 * @param bool $value
+	 * @param bool $autoCommit
 	 * @return $this
 	 */
-	public function setAutoCommit(bool $value = true): self
+	public function setAutoCommit(bool $autoCommit = true): self
 	{
-		return $this->setData($value ? 'true' : 'false', 'autoCommit');
+		return $this->setData($autoCommit ? 'true' : 'false', 'autoCommit');
 	}
 
 	/**
