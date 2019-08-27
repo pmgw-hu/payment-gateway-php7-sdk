@@ -16,7 +16,7 @@ class CloseTest extends SimpleTransactionRequestAbstract
 	protected function getDataKeys(): array
 	{
 		$result = parent::getDataKeys();
-		$result['approved'] = false;
+		$result['approved'] = 'false';
 		return $result;
 	}
 }

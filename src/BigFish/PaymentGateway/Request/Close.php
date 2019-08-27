@@ -12,6 +12,6 @@ class Close extends SimpleRequestAbstract
 	 */
 	public function setApprove(bool $approve)
 	{
-		return $this->setData($approve, 'approved');
+		return $this->setData($approve ? 'true' : 'false', 'approved');
 	}
 }
