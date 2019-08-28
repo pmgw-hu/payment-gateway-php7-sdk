@@ -35,7 +35,6 @@ class InitTest extends InitRPTest
 			array(true, 'setOneClickPayment'),
 			array(true, 'setOneClickForcedRegistration'),
 			array('7612312312', 'setOneClickReferenceId'),
-			array('true', 'setAutoCommit'),
 			array('something', 'setStoreName')
 		);
 	}

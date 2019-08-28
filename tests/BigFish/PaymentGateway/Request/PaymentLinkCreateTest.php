@@ -40,7 +40,6 @@ class PaymentLinkCreateTest extends \PHPUnit\Framework\TestCase
 			array(true, 'setEmailNotificationOnlySuccess'),
 			array('test@test.com', 'setNotificationEmail'),
 			array('2020-01-01 01:01:01', 'setExpirationTime'),
-			array('true', 'setAutoCommit'),
 			array(12345, 'setOrderId'),
 			array(54321, 'setUserId'),
 			array('EUR', 'setCurrency'),
