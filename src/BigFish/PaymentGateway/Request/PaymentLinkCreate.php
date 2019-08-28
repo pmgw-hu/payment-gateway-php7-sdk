@@ -31,12 +31,12 @@ class PaymentLinkCreate extends InitAbstract
 	}
 
 	/**
-	 * @param bool $value
+	 * @param bool $emailNotificationOnlySuccess
 	 * @return $this
 	 */
-	public function setEmailNotificationOnlySuccess(bool $value): self
+	public function setEmailNotificationOnlySuccess(bool $emailNotificationOnlySuccess): self
 	{
-		return $this->setData($value, 'emailNotificationOnlySuccess');
+		return $this->setData($emailNotificationOnlySuccess, 'emailNotificationOnlySuccess');
 	}
 
 	/**
@@ -72,11 +72,11 @@ class PaymentLinkCreate extends InitAbstract
 	}
 
 	/**
-	 * @param bool $value
+	 * @param bool $autoCommit
 	 * @return $this
 	 */
-	public function setAutoCommit(bool $value = true): self
+	public function setAutoCommit(bool $autoCommit = true): self
 	{
-		return $this->setData($value, 'autoCommit');
+		return $this->setData($autoCommit ? 'true' : 'false', 'autoCommit');
 	}
 }

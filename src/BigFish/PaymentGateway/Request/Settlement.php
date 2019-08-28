@@ -29,21 +29,21 @@ class Settlement extends InitBaseAbstract
 	}
 
 	/**
-	 * @param bool $value
+	 * @param bool $getItems
 	 * @return $this
 	 */
-	public function setGetItems(bool $value): self
+	public function setGetItems(bool $getItems): self
 	{
-		return $this->setData($value, 'getItems');
+		return $this->setData($getItems, 'getItems');
 	}
 
 	/**
-	 * @param bool $value
+	 * @param bool $getBatches
 	 * @return $this
 	 */
-	public function setGetBatches(bool $value): self
+	public function setGetBatches(bool $getBatches): self
 	{
-		return $this->setData($value, 'getBatches');
+		return $this->setData($getBatches, 'getBatches');
 	}
 
 	/**

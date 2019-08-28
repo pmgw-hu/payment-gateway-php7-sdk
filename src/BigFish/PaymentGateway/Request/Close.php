@@ -10,8 +10,8 @@ class Close extends SimpleRequestAbstract
 	 * @param bool $approve Approve or decline transaction (true/false)
 	 * @return $this
 	 */
-	public function setApprove(bool $approve)
+	public function setApprove(bool $approve): self
 	{
-		return $this->setData($approve, 'approved');
+		return $this->setData($approve ? 'true' : 'false', 'approved');
 	}
 }

@@ -35,7 +35,6 @@ class InitTest extends InitRPTest
 			array(true, 'setOneClickPayment'),
 			array(true, 'setOneClickForcedRegistration'),
 			array('7612312312', 'setOneClickReferenceId'),
-			array(true, 'setAutoCommit'),
 			array('something', 'setStoreName')
 		);
 	}
@@ -51,7 +50,7 @@ class InitTest extends InitRPTest
 		// test chain
 		$this->assertInstanceOf(get_class($init), $result);
 		$this->assertArrayHasKey('autoCommit', $init->getData());
-		$this->assertFalse($init->getData()['autoCommit']);
+		$this->assertEquals('false', $init->getData()['autoCommit']);
 	}
 
 	/**
