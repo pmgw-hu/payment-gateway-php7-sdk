@@ -77,6 +77,6 @@ class PaymentLinkCreate extends InitAbstract
 	 */
 	public function setAutoCommit(bool $autoCommit = true): self
 	{
-		return $this->setData($autoCommit, 'autoCommit');
+		return $this->setData($autoCommit ? 'true' : 'false', 'autoCommit');
 	}
 }
