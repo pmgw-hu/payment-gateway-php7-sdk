@@ -18,7 +18,7 @@ BIG FISH Payment Gateway is available at packagist.org, so you can use composer 
 ```yml
 {
     "require": {
-        "bigfish/payment-gateway-php7-sdk": "3.*"
+        "bigfish/paymentgateway-php7-sdk": "3.*"
     }
 }
 ```
@@ -26,7 +26,7 @@ BIG FISH Payment Gateway is available at packagist.org, so you can use composer 
 or run
 
 ```sh
-composer require bigfish/payment-gateway-php7-sdk
+composer require bigfish/paymentgateway-php7-sdk
 ```
 
 ## Technical documentation
