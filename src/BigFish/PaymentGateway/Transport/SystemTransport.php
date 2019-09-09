@@ -107,7 +107,6 @@ class SystemTransport
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
 		$this->setTimeout($request, $curl);
-		$this->setSslVerify($curl);
 
 		$postData = [
 			'method' => $request->getMethod(),
@@ -159,15 +158,5 @@ class SystemTransport
 		}
 
 		curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-	}
-
-	/**
-	 * @param $curl
-	 */
-	protected function setSslVerify($curl)
-	{
-		$sslVerify = !$this->config->isTestMode();
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, $sslVerify);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, $sslVerify);
 	}
 }
