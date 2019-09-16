@@ -34,6 +34,7 @@ class InitTest extends InitRPTest
 			array('823', 'setMkbSzepCvv'),
 			array(true, 'setOneClickPayment'),
 			array(true, 'setOneClickForcedRegistration'),
+			array(true, 'setGatewayPaymentPage'),
 			array('7612312312', 'setOneClickReferenceId'),
 			array('something', 'setStoreName')
 		);

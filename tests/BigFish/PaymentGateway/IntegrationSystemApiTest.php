@@ -55,6 +55,30 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	 * @return
 	 * @throws PaymentGateway\Exception\PaymentGatewayException
 	 */
+	public function initMKB_GatewayPage()
+	{
+		$paymentGateWay = $this->getPaymentGateway();
+		$init = new PaymentGateway\Request\Init();
+		$init->setAmount(3)
+			->setUserId(123)
+			->setOrderId(123)
+			->setCurrency('HUF')
+			->setProviderName(PaymentGateway::PROVIDER_MKB_SZEP)
+			->setResponseUrl('http://integration.test.bigfish.hu')
+			->setGatewayPaymentPage(true)
+			->setMkbSzepCafeteriaId(1111)
+			->setAutoCommit(true);
+
+		$result = $paymentGateWay->send($init);
+		$this->assertNotEmpty($result->TransactionId, 'No transaction id. Error: ' . $result->ResultMessage);
+		return $result->TransactionId;
+	}
+
+	/**
+	 * @test
+	 * @return
+	 * @throws PaymentGateway\Exception\PaymentGatewayException
+	 */
 	public function initBorgun()
 	{
 		$paymentGateWay = $this->getPaymentGateway();
