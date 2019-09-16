@@ -11,14 +11,6 @@ class Init extends InitAbstract
 	const REQUEST_TYPE = 'Init';
 
 	/**
-	 * BIG FISH Payment Gateway payment page (MKBSZEP)
-	 *
-	 * @var boolean
-	 * @access public
-	 */
-	public $gatewayPaymentPage = false;
-
-	/**
 	 * @param string $notificationUrl
 	 * @return $this
 	 * @throws PaymentGatewayException
@@ -127,7 +119,6 @@ class Init extends InitAbstract
 	 */
 	public function setGatewayPaymentPage(bool $gatewayPaymentPage): self
 	{
-		$this->gatewayPaymentPage = $gatewayPaymentPage;
-		return $this;
+		return $this->setData($gatewayPaymentPage, 'gatewayPaymentPage');
 	}
 }

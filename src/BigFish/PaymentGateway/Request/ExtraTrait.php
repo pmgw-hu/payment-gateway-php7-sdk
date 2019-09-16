@@ -80,9 +80,10 @@ trait ExtraTrait
 
 	protected function getPaymentPageProperty(): bool
 	{
-		if (property_exists($this, 'gatewayPaymentPage')) {
-			return $this->gatewayPaymentPage;
+		if (property_exists($this, 'data')) {
+			return $this->data['gatewayPaymentPage'] ?? false;
 		}
+
 		return false;
 	}
 
