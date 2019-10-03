@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '3.0.4';
+	const VERSION = '3.1.0';
 
 	/**
 	 * SDK Name
@@ -54,6 +54,7 @@ class PaymentGateway
 	const PROVIDER_OTP_MULTIPONT = 'OTPMultipont';
 	const PROVIDER_OTP_SIMPLE = 'OTPSimple';
 	const PROVIDER_OTP_SIMPLE_WIRE = 'OTPSimpleWire';
+	const PROVIDER_OTPARUHITEL = 'OTPAruhitel';
 	const PROVIDER_OTPAY = 'OTPay';
 	const PROVIDER_OTPAY_MASTERPASS = 'OTPayMP';
 	const PROVIDER_PAYPAL = 'PayPal';
