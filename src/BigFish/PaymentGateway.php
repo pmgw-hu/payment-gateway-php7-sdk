@@ -87,6 +87,16 @@ class PaymentGateway
 	];
 
 	/**
+	 * Result code constants
+	 */
+	const RESULT_CODE_SUCCESS = 'SUCCESSFUL';
+	const RESULT_CODE_ERROR = 'ERROR';
+	const RESULT_CODE_PENDING = 'PENDING';
+	const RESULT_CODE_USER_CANCEL = 'CANCELED';
+	const RESULT_CODE_TIMEOUT = 'TIMEOUT';
+	const RESULT_CODE_OPEN = 'OPEN';
+
+	/**
 	 * @var Config
 	 */
 	private $config;
