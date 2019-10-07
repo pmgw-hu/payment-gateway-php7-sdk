@@ -108,7 +108,7 @@ trait ExtraTrait
 
 	/**
 	 * @param string $encryptPublicKey
-	 * @return $this
+	 * @return self
 	 */
 	public function setEncryptKey(string $encryptPublicKey): self
 	{
@@ -117,7 +117,7 @@ trait ExtraTrait
 	}
 
 	/**
-	 * @param $providerName
+	 * @param string $providerName
 	 */
 	protected function removeSensitiveInformation(string $providerName)
 	{

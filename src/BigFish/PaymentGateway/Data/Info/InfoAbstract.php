@@ -8,7 +8,7 @@ use BigFish\PaymentGateway\Common\BaseAbstract;
 abstract class InfoAbstract extends BaseAbstract implements InfoInterface
 {
 	/**
-	 * @return null|string
+	 * @return string
 	 */
 	abstract public function getStructurePath(): string;
 }

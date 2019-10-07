@@ -30,7 +30,7 @@ class SystemTransport
 	/**
 	 * Get user agent string
 	 *
-	 * @param $method string
+	 * @param string $method
 	 * @return string
 	 * @access private
 	 * @static
@@ -96,9 +96,6 @@ class SystemTransport
 		$this->prepareRequest($request);
 
 		$curl = curl_init();
-		if (!$curl) {
-			throw new PaymentGatewayException('cURL initialization error');
-		}
 
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl, CURLOPT_HTTPHEADER, [$this->getAuthorizationHeader()]);
@@ -144,7 +141,7 @@ class SystemTransport
 
 	/**
 	 * @param RequestInterface $requestInterface
-	 * @param $curl
+	 * @param resource $curl
 	 */
 	protected function setTimeout(RequestInterface $requestInterface, $curl)
 	{

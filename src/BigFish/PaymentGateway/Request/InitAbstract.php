@@ -42,8 +42,8 @@ abstract class InitAbstract extends InitBaseAbstract
 	/**
 	 * Set the identifier of the order in your system
 	 *
-	 * @param mixed $orderId Order identifier
-	 * @return $this
+	 * @param string $orderId Order identifier
+	 * @return self
 	 */
 	public function setOrderId(string $orderId): self
 	{
@@ -53,8 +53,8 @@ abstract class InitAbstract extends InitBaseAbstract
 	/**
 	 * Set the identifier of the user in your system
 	 *
-	 * @param mixed $userId User identifier
-	 * @return $this
+	 * @param string $userId User identifier
+	 * @return self
 	 */
 	public function setUserId(string $userId): self
 	{
@@ -65,7 +65,7 @@ abstract class InitAbstract extends InitBaseAbstract
 	 * Set payment transaction currency
 	 *
 	 * @param string $currency Three-letter ISO currency code (e.g. HUF, USD etc.)
-	 * @return $this
+	 * @return self
 	 */
 	public function setCurrency(string $currency): self
 	{
@@ -74,7 +74,7 @@ abstract class InitAbstract extends InitBaseAbstract
 
 	/**
 	 * @param PaymentGateway\Data\Info $info
-	 * @return InitAbstract
+	 * @return self
 	 */
 	public function setInfo(Info $info): self
 	{

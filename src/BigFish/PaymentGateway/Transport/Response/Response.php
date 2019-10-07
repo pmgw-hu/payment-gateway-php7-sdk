@@ -50,9 +50,9 @@ class Response implements ResponseInterface
 
 	/**
 	 * @param array $result
-	 * @param \stdClass $object
+	 * @param object $object
 	 */
-	protected static function getObjectVars(&$result = [], \stdClass $object)
+	protected static function getObjectVars(&$result = [], object $object)
 	{
 		foreach (get_object_vars($object) as $name => $value) {
 			if (!is_object($value)) {

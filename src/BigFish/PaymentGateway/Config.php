@@ -87,7 +87,7 @@ XIm63iVw6gjP2qDnNwIDAQAB
 	public $outCharset = self::CHARSET_UTF8;
 
 	/**
-	 * @var
+	 * @var string
 	 */
 	protected $encryptPublicKey = self::SDK_TEST_ENCRYPT_PUBLIC_KEY;
 

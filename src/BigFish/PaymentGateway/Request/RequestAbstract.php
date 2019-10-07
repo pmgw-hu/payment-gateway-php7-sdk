@@ -9,7 +9,7 @@ abstract class RequestAbstract extends BaseAbstract implements RequestInterface
 	const REQUEST_TYPE = 'RequestAbstract';
 
 	/**
-	 * @return null|string
+	 * @return string
 	 */
 	public function getMethod(): string
 	{

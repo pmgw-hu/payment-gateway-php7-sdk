@@ -127,7 +127,7 @@ class PaymentGateway
 	}
 
 	/**
-	 * @param $code
+	 * @param int $code
 	 */
 	protected function terminate($code)
 	{
