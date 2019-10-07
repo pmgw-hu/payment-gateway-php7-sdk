@@ -45,7 +45,7 @@ class SystemTransport
 	 */
 	protected function getHttpHost(): string
 	{
-		return $_SERVER['HTTP_HOST'] ?? php_uname('n') ?? 'localhost';
+		return $_SERVER['HTTP_HOST'] ?? function_exists('php_uname') ? php_uname('n') : 'localhost';
 	}
 
 	/**
