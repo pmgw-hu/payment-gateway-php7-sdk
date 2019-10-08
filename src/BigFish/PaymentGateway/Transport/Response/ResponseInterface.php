@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Transport\Response;
 
-
 interface ResponseInterface
 {
 	/**

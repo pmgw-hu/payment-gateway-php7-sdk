@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 class Invoice extends SimpleRequestAbstract
 {
 	const REQUEST_TYPE = 'Invoice';

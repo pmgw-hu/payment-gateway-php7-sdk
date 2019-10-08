@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 abstract class SimpleRequestAbstract extends RequestAbstract
 {
 	/**

@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Data\Info;
 
-
 trait StructurePathTrait
 {
 	public function getStructurePath(): string

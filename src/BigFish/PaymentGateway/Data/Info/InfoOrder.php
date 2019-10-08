@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Data\Info;
 
-
 use BigFish\PaymentGateway\Data\Info;
 
 class InfoOrder extends Info

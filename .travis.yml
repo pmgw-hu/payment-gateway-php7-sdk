@@ -35,13 +35,15 @@ jobs:
           composer require --no-interaction --no-suggest --dev jakub-onderka/php-parallel-lint phpstan/phpstan-shim
       script:
        - |
-         ./bin/phpcpd ./src/
+         ./vendor/bin/parallel-lint ./src/ ./tests/
        - |
-         ./bin/phpcs -p --standard=PSR12 --exclude=Generic.WhiteSpace.DisallowTabIndent ./src/
+         ./bin/phpcpd ./src/ #FIXME ./tests/
        - |
-         ./vendor/bin/phpstan analyze --level=5 ./src/
+         # FIXME Resolve PSR12.Properties.ConstantVisibility
+         ./bin/phpcs -p --standard=PSR12 --exclude=Generic.WhiteSpace.DisallowTabIndent,PSR12.Properties.ConstantVisibility ./src/ #FIXME ./tests/
+       - |
+         ./vendor/bin/phpstan analyze --level=5 ./src/ #FIXME ./tests/
     - stage: unit-tests
-      name: "Unit Test"
       php: 7.2
       env: "HTTP_HOST=localhost"
     - php: 7.3

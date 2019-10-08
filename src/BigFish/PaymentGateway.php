@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BIG FISH Payment Gateway (https://www.paymentgateway.hu)
  * PHP SDK

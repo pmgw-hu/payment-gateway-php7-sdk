@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Data\Info\Customer;
 
-
 use BigFish\PaymentGateway\Data\Info\InfoCustomer;
 use BigFish\PaymentGateway\Data\Info\StructurePathTrait;
 

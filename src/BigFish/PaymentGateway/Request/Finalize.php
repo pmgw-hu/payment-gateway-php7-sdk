@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 class Finalize extends SimpleRequestAbstract implements RedirectLocationInterface
 {
 	const REQUEST_TYPE = 'Finalize';

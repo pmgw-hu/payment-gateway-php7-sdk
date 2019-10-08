@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 class Start extends SimpleRequestAbstract implements RedirectLocationInterface
 {
 	const REQUEST_TYPE = 'Start';

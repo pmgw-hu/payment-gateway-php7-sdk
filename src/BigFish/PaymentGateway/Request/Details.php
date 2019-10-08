@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 class Details extends SimpleRequestAbstract
 {
 	const REQUEST_TYPE = 'Details';

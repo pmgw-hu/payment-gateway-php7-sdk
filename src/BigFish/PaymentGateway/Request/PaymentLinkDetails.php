@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 class PaymentLinkDetails extends RequestAbstract
 {
 	const REQUEST_TYPE = 'PaymentLinkDetails';

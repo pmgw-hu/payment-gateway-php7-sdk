@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 class PaymentLinkCancel extends RequestAbstract
 {
 	const REQUEST_TYPE = 'PaymentLinkCancel';

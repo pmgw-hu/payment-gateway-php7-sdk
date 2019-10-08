@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Common;
 
-
 abstract class BaseAbstract implements BaseInterface
 {
 	/**

@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 class Providers extends RequestAbstract
 {
 	const REQUEST_TYPE = 'Providers';

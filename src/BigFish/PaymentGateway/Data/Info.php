@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Data;
 
-
 use BigFish\PaymentGateway\Data\Info\InfoAbstract;
 use BigFish\PaymentGateway\Data\Info\Order\InfoOrderProductItem;
 
@@ -35,7 +34,7 @@ class Info extends InfoAbstract
 			$pathArray = explode('/', $pathString);
 			$temp = &$finalData;
 
-			foreach($pathArray as $key) {
+			foreach ($pathArray as $key) {
 				$temp = &$temp[$key];
 			}
 			$temp = $value;

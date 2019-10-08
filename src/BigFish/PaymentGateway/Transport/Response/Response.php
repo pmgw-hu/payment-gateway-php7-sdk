@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Transport\Response;
 
-
 use BigFish\PaymentGateway\Exception\PaymentGatewayException;
 
 class Response implements ResponseInterface
@@ -52,6 +51,7 @@ class Response implements ResponseInterface
 	 * @param array $result
 	 * @param \stdClass $object
 	 */
+	// phpcs:ignore PEAR.Functions.ValidDefaultValue.NotAtEnd
 	protected static function getObjectVars(&$result = [], \stdClass $object)
 	{
 		foreach (get_object_vars($object) as $name => $value) {

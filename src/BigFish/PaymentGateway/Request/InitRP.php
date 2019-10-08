@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 class InitRP extends InitAbstract
 {
 	const REQUEST_TYPE = 'InitRP';

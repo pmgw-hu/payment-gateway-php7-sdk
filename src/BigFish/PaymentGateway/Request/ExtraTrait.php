@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 use BigFish\PaymentGateway;
 use BigFish\PaymentGateway\Exception\PaymentGatewayException;
 
@@ -31,7 +30,10 @@ trait ExtraTrait
 		$providerName = $this->data['providerName'];
 		$encryptData = [];
 
-		if (in_array($providerName, PaymentGateway::$oneClickProviders) && isset($this->data['oneClickForcedRegistration'])) {
+		if (
+			in_array($providerName, PaymentGateway::$oneClickProviders) &&
+			isset($this->data['oneClickForcedRegistration'])
+		) {
 			$extra['oneClickForcedRegistration'] = true;
 		}
 
@@ -125,11 +127,17 @@ trait ExtraTrait
 			unset($this->data['otpCardPocketId']);
 		}
 
-		if (!(in_array($providerName, PaymentGateway::$oneClickProviders) && isset($this->data['oneClickPayment']))) {
+		if (
+			!(in_array($providerName, PaymentGateway::$oneClickProviders) &&
+			isset($this->data['oneClickPayment']))
+		) {
 			unset($this->data['oneClickPayment']);
 		}
 
-		if (!(in_array($providerName, PaymentGateway::$oneClickProviders) && isset($this->data['oneClickReferenceId']))) {
+		if (
+			!(in_array($providerName, PaymentGateway::$oneClickProviders) &&
+			isset($this->data['oneClickReferenceId']))
+		) {
 			unset($this->data['oneClickReferenceId']);
 		}
 

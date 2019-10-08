@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Data\Info;
 
-
 use BigFish\PaymentGateway\Common\BaseInterface;
 
 interface InfoInterface extends BaseInterface

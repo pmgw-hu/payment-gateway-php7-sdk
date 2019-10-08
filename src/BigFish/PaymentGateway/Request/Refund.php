@@ -2,7 +2,6 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-
 class Refund extends SimpleRequestAbstract
 {
 	const REQUEST_TYPE = 'Refund';
