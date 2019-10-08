@@ -16,6 +16,13 @@ before_install:
   - |
     composer validate
 
+install:
+  - |
+    composer install --no-interaction --no-suggest
+script:
+  - |
+    composer phpunit
+
 jobs:
   include:
     - stage: zero-coverage
@@ -25,7 +32,7 @@ jobs:
         - |
           wget -O ./bin/phpcpd "https://phar.phpunit.de/phpcpd.phar" && chmod +x ./bin/phpcpd
           wget -O ./bin/phpcs "https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar" && chmod +x ./bin/phpcs
-          composer require --no-interactive --no-suggest --dev jakub-onderka/php-parallel-lint phpstan/phpstan-shim
+          composer require --no-interaction --no-suggest --dev jakub-onderka/php-parallel-lint phpstan/phpstan-shim
       script:
        - |
          ./bin/phpcpd ./src/
@@ -36,11 +43,6 @@ jobs:
     - stage: unit-tests
       name: "Unit Test"
       php: 7.2
-      php: 7.3
       env: "HTTP_HOST=localhost"
-      install:
-        - |
-          composer install --no-interactive --no-suggest
-      script:
-        - |
-          composer phpunit
+    - php: 7.3
+      env: "HTTP_HOST=localhost"
