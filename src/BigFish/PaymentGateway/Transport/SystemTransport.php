@@ -134,8 +134,16 @@ class SystemTransport
 
 	protected function getAuthorizationHeader(): string
 	{
-		return 'Authorization: Basic ' .
-			base64_encode($this->config->getStoreName() . ':' . $this->config->getApiKey());
+		return sprintf(
+			'Authorization: Basic %s',
+			base64_encode(
+				sprintf(
+					'%s:%s',
+					$this->config->getStoreName(),
+					$this->config->getApiKey()
+				)
+			)
+		);
 	}
 
 	protected function prepareData(RequestInterface $requestInterface): string

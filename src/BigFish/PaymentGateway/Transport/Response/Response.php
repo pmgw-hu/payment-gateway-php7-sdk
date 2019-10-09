@@ -83,7 +83,7 @@ class Response implements ResponseInterface
 	 */
 	public function __get(string $name)
 	{
-        return $this->data[$name] ?? null;
+		return $this->data[$name] ?? null;
 	}
 
 	/**

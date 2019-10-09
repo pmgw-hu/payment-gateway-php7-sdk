@@ -7,7 +7,7 @@ use BigFish\PaymentGateway\Exception\PaymentGatewayException;
 class Init extends InitAbstract
 {
 	use ExtraTrait;
-    use SzepCardTrait;
+	use SzepCardTrait;
 
 	const REQUEST_TYPE = 'Init';
 

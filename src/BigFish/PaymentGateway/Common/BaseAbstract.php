@@ -23,12 +23,12 @@ abstract class BaseAbstract implements BaseInterface
 		return $data;
 	}
 
-    /**
-     * @param mixed $value
-     * @param string $fieldName
-     * @return $this
-     */
-    protected function setData($value, string $fieldName): self
+	/**
+	 * @param mixed $value
+	 * @param string $fieldName
+	 * @return $this
+	 */
+	protected function setData($value, string $fieldName): self
 	{
 		$this->data[$fieldName] = $value;
 		return $this;
