@@ -82,7 +82,7 @@ $paymentGateway->send(
 
 ```php
 $result = $paymentGateway->send(
-        (new \BigFish\PaymentGateway\Request\Result())->setTransactionId($_GET['transactionId'])
+        (new \BigFish\PaymentGateway\Request\Result())->setTransactionId($_GET['TransactionId'])
     );
 ```
 
@@ -90,27 +90,25 @@ $result = $paymentGateway->send(
 
 ```php
 $response = $paymentGateway->send(
-        (new \BigFish\PaymentGateway\Request\Close())->setTransactionId($transActionId)
+        (new \BigFish\PaymentGateway\Request\Close())->setTransactionId($transactionId)
     );
 ```
-
 
 #### Refund request
 
 ```php
 $response = $paymentGateway->send(
         (new \BigFish\PaymentGateway\Request\Refund())
-            ->setTransactionId($transActionId)
+            ->setTransactionId($transactionId)
             ->setAmount(100)
     );
 ```
-
 
 #### One click token cancel request
 
 ```php
 $response = $paymentGateway->send(
-        (new \BigFish\PaymentGateway\Request\OneClickTokenCancel())->setTransactionId($transActionId)
+        (new \BigFish\PaymentGateway\Request\OneClickTokenCancel())->setTransactionId($transactionId)
     );
 ```
 
@@ -123,6 +121,7 @@ $response = $paymentGateway->send(
             ->setUserId('userId')
     );
 ```
+
 ### Init Recurring Payment - InitRP
 
 ```php
@@ -135,6 +134,18 @@ $initRP->setReferenceTransactionId("783593c87fee4d372f47f53840028682")
     ->setUserId("BF-TEST-USER-REG");
 
 $response = $paymentGateway->send($initRP);
+```
+
+#### StartRP request
+
+```php
+if (!$response->ResultCode == "SUCCESSFUL" || !$response->TransactionId) {
+    // handle error here
+}
+
+$result = $paymentGateway->send(
+        (new \BigFish\PaymentGateway\Request\StartRP())->setTransactionId($response->TransactionId)
+    );
 ```
 
 ### Create Payment Link - PaymentLinkCreate
@@ -169,8 +180,8 @@ $response = $paymentGateway->send(
 
 ### Info data
 
-
 #### Basic usage
+
 ```php
 $infoObject = new \BigFish\PaymentGateway\Data\Info();
  
@@ -205,7 +216,6 @@ $infoOrderProductItem->setSku("PMG055008")
     ->setDescription("Product12 desc.");
 
 $infoObject->setData($infoOrderProductItem); //add $infoShipping to $infoObject
-
 ```
 
 #### Init
