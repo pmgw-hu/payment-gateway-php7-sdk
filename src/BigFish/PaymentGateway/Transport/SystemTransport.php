@@ -96,9 +96,6 @@ class SystemTransport
 		$this->prepareRequest($request);
 
 		$curl = curl_init();
-		if (!$curl) {
-			throw new PaymentGatewayException('cURL initialization error');
-		}
 
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl, CURLOPT_HTTPHEADER, [$this->getAuthorizationHeader()]);
