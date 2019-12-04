@@ -200,7 +200,7 @@ class IntegrationInfoTest extends IntegrationAbstract
 		$init = new Init();
 		$init->setAmount(10)
 			->setCurrency('HUF')
-			->setProviderName(PaymentGateway::PROVIDER_OTPAY)
+			->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
 			->setResponseUrl('http://integration.test.bigfish.hu')
 			->setAutoCommit();
 
@@ -212,7 +212,7 @@ class IntegrationInfoTest extends IntegrationAbstract
 		$createPaylink = new PaymentGateway\Request\PaymentLinkCreate();
 		$createPaylink->setAmount(99)
 			->setCurrency('HUF')
-			->setProviderName(PaymentGateway::PROVIDER_OTPAY)
+			->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
 			->setNotificationUrl('http://integration.test.bigfish.hu')
 			->setNotificationEmail('test@test.com')
 			->setAutoCommit();
