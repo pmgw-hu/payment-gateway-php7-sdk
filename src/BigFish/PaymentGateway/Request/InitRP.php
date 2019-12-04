@@ -2,6 +2,7 @@
 
 namespace BigFish\PaymentGateway\Request;
 
+use BigFish\PaymentGateway\Exception\PaymentGatewayException;
 
 class InitRP extends InitAbstract
 {
@@ -16,5 +17,19 @@ class InitRP extends InitAbstract
 	public function setReferenceTransactionId(string $referenceTransactionId)
 	{
 		return $this->setData($referenceTransactionId, 'referenceTransactionId');
+	}
+
+	/**
+	 * @param string $notificationUrl
+	 * @return $this
+	 * @throws PaymentGatewayException
+	 */
+	public function setNotificationUrl(string $notificationUrl): self
+	{
+		if (filter_var($notificationUrl, FILTER_VALIDATE_URL) === false) {
+			throw new PaymentGatewayException('Invalid notification url');
+		}
+
+		return $this->setData($notificationUrl, 'notificationUrl');
 	}
 }

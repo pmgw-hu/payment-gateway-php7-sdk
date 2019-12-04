@@ -11,6 +11,20 @@ class Init extends InitAbstract
 	const REQUEST_TYPE = 'Init';
 
 	/**
+	 * @param string $notificationUrl
+	 * @return $this
+	 * @throws PaymentGatewayException
+	 */
+	public function setNotificationUrl(string $notificationUrl): self
+	{
+		if (filter_var($notificationUrl, FILTER_VALIDATE_URL) === false) {
+			throw new PaymentGatewayException('Invalid notification url');
+		}
+
+		return $this->setData($notificationUrl, 'notificationUrl');
+	}
+
+	/**
 	 * @param string $language
 	 * @return $this
 	 */

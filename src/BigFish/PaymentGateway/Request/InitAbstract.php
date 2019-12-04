@@ -25,20 +25,6 @@ abstract class InitAbstract extends InitBaseAbstract
 	}
 
 	/**
-	 * @param string $notificationUrl
-	 * @return $this
-	 * @throws PaymentGatewayException
-	 */
-	public function setNotificationUrl(string $notificationUrl): self
-	{
-		if (filter_var($notificationUrl, FILTER_VALIDATE_URL) === false) {
-			throw new PaymentGatewayException('Invalid notification url');
-		}
-
-		return $this->setData($notificationUrl, 'notificationUrl');
-	}
-
-	/**
 	 * Set payment transaction amount
 	 *
 	 * @param float $amount Transaction amount
