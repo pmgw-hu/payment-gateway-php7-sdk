@@ -79,7 +79,7 @@ class InitTest extends InitRPTest
 	 * @test
 	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
 	 */
-	public function setNotificationUrl_sizeCheck()
+	public function setNotificationUrl_invalidUrl()
 	{
 		$request = $this->getRequest();
 		$request->setNotificationUrl('invalidUrl');
