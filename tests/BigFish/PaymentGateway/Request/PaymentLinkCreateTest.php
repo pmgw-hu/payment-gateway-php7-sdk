@@ -172,27 +172,27 @@ class PaymentLinkCreateTest extends \PHPUnit\Framework\TestCase
 
 	public function testCreatePaylinkDefaultData()
 	{
-		$initRp = new PaymentLinkCreate();
-		$this->assertEquals(PaymentGateway::NAME, $initRp->getData()['moduleName']);
-		$this->assertEquals(PaymentGateway::VERSION, $initRp->getData()['moduleVersion']);
+		$initPlc = new PaymentLinkCreate();
+		$this->assertEquals(PaymentGateway::NAME, $initPlc->getData()['moduleName']);
+		$this->assertEquals(PaymentGateway::VERSION, $initPlc->getData()['moduleVersion']);
 	}
 
 	public function testCreatePaylinkSetModuleName()
 	{
-		$initRp = new PaymentLinkCreate();
-		$initRp->setModuleName('test');
+		$initPlc = new PaymentLinkCreate();
+		$initPlc->setModuleName('test');
 
-		$this->assertArrayHasKey('moduleName', $initRp->getData());
-		$this->assertEquals('test', $initRp->getData()['moduleName']);
+		$this->assertArrayHasKey('moduleName', $initPlc->getData());
+		$this->assertEquals('test', $initPlc->getData()['moduleName']);
 	}
 
 	public function testCreatePaylinkSetModuleVersion()
 	{
-		$initRp = new PaymentLinkCreate();
-		$initRp->setModuleVersion('42');
+		$initPlc = new PaymentLinkCreate();
+		$initPlc->setModuleVersion('42');
 
-		$this->assertArrayHasKey('moduleVersion', $initRp->getData());
-		$this->assertEquals('42', $initRp->getData()['moduleVersion']);
+		$this->assertArrayHasKey('moduleVersion', $initPlc->getData());
+		$this->assertEquals('42', $initPlc->getData()['moduleVersion']);
 	}
 
 }

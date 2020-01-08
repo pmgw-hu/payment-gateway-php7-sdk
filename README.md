@@ -2,7 +2,7 @@
 
 ## Version
 
-3.1.0
+3.2.0
 
 ## Requirements
 
@@ -83,6 +83,14 @@ $paymentGateway->send(
 ```php
 $result = $paymentGateway->send(
         (new \BigFish\PaymentGateway\Request\Result())->setTransactionId($_GET['TransactionId'])
+    );
+```
+
+#### Details request
+
+```php
+$details = $paymentGateway->send(
+        (new \BigFish\PaymentGateway\Request\Details())->setTransactionId($_GET['TransactionId'])
     );
 ```
 
@@ -204,7 +212,7 @@ $infoOrderProductItem->setSku("PMG055005")
     ->setImageUrl("http://webhsop/product11.jpg")
     ->setDescription("Product11 desc.");
 
-$infoObject->setData($infoOrderProductItem); //add $infoShipping to $infoObject
+$infoObject->setObject($infoOrderProductItem); //add $infoShipping to $infoObject
  
 $infoOrderProductItem = new \BigFish\PaymentGateway\Data\Info\Order\InfoOrderProductItem();
 $infoOrderProductItem->setSku("PMG055008")
@@ -215,7 +223,7 @@ $infoOrderProductItem->setSku("PMG055008")
     ->setImageUrl("http://webhsop/product12.jpg")
     ->setDescription("Product12 desc.");
 
-$infoObject->setData($infoOrderProductItem); //add $infoShipping to $infoObject
+$infoObject->setObject($infoOrderProductItem); //add $infoShipping to $infoObject
 ```
 
 #### Init

@@ -47,6 +47,7 @@ class InitRPTest extends \PHPUnit\Framework\TestCase
 		return array(
 			array('TestProvider', 'setProviderName'),
 			array('http://test.hu', 'setResponseUrl'),
+			array('http://test2.hu', 'setNotificationUrl'),
 			array(100, 'setAmount'),
 			array('23234', 'setReferenceTransactionId'),
 			array(12345, 'setOrderId'),
@@ -63,6 +64,16 @@ class InitRPTest extends \PHPUnit\Framework\TestCase
 	{
 		$request = $this->getRequest();
 		$request->setResponseUrl('invalidUrl');
+	}
+
+	/**
+	 * @test
+	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function setNotificationUrl_invalidUrl()
+	{
+		$request = $this->getRequest();
+		$request->setNotificationUrl('invalidUrl');
 	}
 
 	/**

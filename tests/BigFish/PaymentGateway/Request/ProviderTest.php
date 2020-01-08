@@ -12,14 +12,14 @@ class ProviderTest extends SimpleTransactionRequestAbstract
 	protected function getRequest(string $transactionId): RequestInterface
 	{
 		$provider = new Providers();
-		$provider->setStoreName(PaymentGateway::PROVIDER_OTPAY);
+		$provider->setStoreName(PaymentGateway::PROVIDER_BORGUN2);
 		return $provider;
 	}
 
 	protected function getDataKeys():array
 	{
 		return array(
-			'storeName' => PaymentGateway::PROVIDER_OTPAY
+			'storeName' => PaymentGateway::PROVIDER_BORGUN2
 		);
 	}
 }
