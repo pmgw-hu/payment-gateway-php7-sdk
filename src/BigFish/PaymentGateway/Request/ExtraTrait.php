@@ -28,7 +28,7 @@ trait ExtraTrait
 	 */
 	public function setExtra(array $extra = []): self
 	{
-		$providerName = $this->data['providerName'];
+		$providerName = (string)$this->data['providerName'];
 		$encryptData = [];
 
 		if (in_array($providerName, PaymentGateway::$oneClickProviders) && isset($this->data['oneClickForcedRegistration'])) {
