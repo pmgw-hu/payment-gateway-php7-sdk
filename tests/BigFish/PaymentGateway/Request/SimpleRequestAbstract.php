@@ -33,4 +33,15 @@ abstract class SimpleRequestAbstract extends \PHPUnit\Framework\TestCase
 			}
 		);
 	}
+
+	/**
+	 * URL safe encode (base64)
+	 *
+	 * @param string $string
+	 * @return string
+	 */
+	public function urlSafeEncode(string $string): string
+	{
+		return str_replace(['+', '/', '='], ['-', '_', '.'], base64_encode($string));
+	}
 }
