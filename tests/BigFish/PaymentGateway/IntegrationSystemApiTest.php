@@ -245,6 +245,21 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	 * @depends init
 	 * @runInSeparateProcess
 	 */
+	public function refundWithExtra()
+	{
+		$this->assertApiResponse(
+			(new PaymentGateway\Request\Refund())
+				->setTransactionId($this->init())
+				->setAmount(1000)
+				->setExtra(array('test' => 'foo'))
+		);
+	}
+
+	/**
+	 * @test
+	 * @depends init
+	 * @runInSeparateProcess
+	 */
 	public function oneClickTokenCancelAll()
 	{
 		$this->assertApiResponse(

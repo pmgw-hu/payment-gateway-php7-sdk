@@ -18,4 +18,17 @@ class RefundTest extends SimpleTransactionRequestAbstract
 		$result['amount'] = 1000;
 		return $result;
 	}
+
+	/**
+	 * @test
+	 */
+	public function setExtra_extra()
+	{
+		$refund = $this->getRequest();
+		$refund->setExtra(array('test' => 'foo'));
+
+		$data = $refund->getData();
+		$this->assertArrayHasKey('extra', $data);
+		$this->assertNotEmpty($data['extra']);
+	}
 }

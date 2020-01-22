@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '3.2.0';
+	const VERSION = '3.3.0';
 
 	/**
 	 * SDK Name
@@ -68,6 +68,7 @@ class PaymentGateway
 	const PROVIDER_UNICREDIT = 'UniCredit';
 	const PROVIDER_VIRPAY = 'Virpay';
 	const PROVIDER_WIRECARD_QPAY = 'QPAY';
+	const PROVIDER_WIRECARD = 'Wirecard';
 
 	/**
 	 * Valid OneClickPayment providers
@@ -84,6 +85,7 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_PAYUREST,
 		PaymentGateway::PROVIDER_GP,
 		PaymentGateway::PROVIDER_VIRPAY,
+		PaymentGateway::PROVIDER_WIRECARD,
 	];
 
 	/**
