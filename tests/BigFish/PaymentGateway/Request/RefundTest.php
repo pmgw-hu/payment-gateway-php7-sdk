@@ -9,26 +9,16 @@ class RefundTest extends SimpleTransactionRequestAbstract
 {
 	protected function getRequest(string $transactionId): RequestInterface
 	{
-		return (new Refund())->setTransactionId($transactionId)->setAmount(1000);
+		$refund = (new Refund())->setTransactionId($transactionId)->setAmount(1000);
+		$refund->setExtra(array('test' => 'foo'));
+		return $refund;
 	}
 
 	protected function getDataKeys(): array
 	{
 		$result = parent::getDataKeys();
 		$result['amount'] = 1000;
+		$result['extra'] = array('test' => 'foo');
 		return $result;
-	}
-
-	/**
-	 * @test
-	 */
-	public function setExtra_extra()
-	{
-		$refund = $this->getRequest();
-		$refund->setExtra(array('test' => 'foo'));
-
-		$data = $refund->getData();
-		$this->assertArrayHasKey('extra', $data);
-		$this->assertNotEmpty($data['extra']);
 	}
 }

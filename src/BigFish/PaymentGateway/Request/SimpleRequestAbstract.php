@@ -13,4 +13,15 @@ abstract class SimpleRequestAbstract extends RequestAbstract
 	{
 		return $this->setData($transactionId, 'transactionId');
 	}
+
+	/**
+	 * URL safe encode (base64)
+	 *
+	 * @param string $string
+	 * @return string
+	 */
+	protected function urlSafeEncode(string $string): string
+	{
+		return str_replace(['+', '/', '='], ['-', '_', '.'], base64_encode($string));
+	}
 }
