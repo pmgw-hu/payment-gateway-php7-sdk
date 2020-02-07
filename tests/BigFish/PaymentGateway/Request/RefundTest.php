@@ -16,7 +16,7 @@ class RefundTest extends SimpleTransactionRequestAbstract
 	{
 		$result = parent::getDataKeys();
 		$result['amount'] = 1000;
-		$result['extra'] = $this->urlSafeEncode(json_encode(array('test' => 'foo')));
+		$result['extra'] = 'eyJ0ZXN0IjoiZm9vIn0.';
 		return $result;
 	}
 }
