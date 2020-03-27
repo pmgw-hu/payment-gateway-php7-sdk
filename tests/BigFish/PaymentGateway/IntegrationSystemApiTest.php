@@ -254,6 +254,20 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 		);
 	}
 
+	protected function getPaymentLinkCreateRequest()
+	{
+		$createPaylink = new PaymentGateway\Request\PaymentLinkCreate();
+		$createPaylink->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
+			->setNotificationUrl('http://integration.test.bigfish.hu')
+			->setNotificationEmail('test@test.com')
+			->setGtcUrl('http://integration.test.bigfish.hu/general-terms-and-conditions')
+			->setPrivacyPolicyUrl('http://integration.test.bigfish.hu/privacy-policy')
+			->setRedirectUrl('http://integration.test.bigfish.hu/redirect-url')
+			->setAutoCommit();
+
+		return $createPaylink;
+	}
+
 	/**
 	 * @test
 	 * @return PaymentGateway\Transport\Response\ResponseInterface
@@ -261,17 +275,66 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	public function initPaylink()
 	{
 		$paymentGateWay = $this->getPaymentGateway();
-		$createPaylink = new PaymentGateway\Request\PaymentLinkCreate();
+		$createPaylink = $this->getPaymentLinkCreateRequest();
 		$createPaylink->setAmount(99)
-			->setCurrency('HUF')
-			->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
-			->setNotificationUrl('http://integration.test.bigfish.hu')
-			->setNotificationEmail('test@test.com')
-			->setAutoCommit();
+			->setCurrency('HUF');
 
 		$result = $paymentGateWay->send($createPaylink);
 
 		$this->assertNotEmpty($result->PaymentLinkName, 'No paymentLink name. Error: ' . $result->ResultMessage);
+		return $result;
+	}
+
+	/**
+	 * @test
+	 * @return PaymentGateway\Transport\Response\ResponseInterface
+	 */
+	public function initPaylinkWithFlexibleMinimumAmount()
+	{
+		$paymentGateWay = $this->getPaymentGateway();
+		$createPaylink = $this->getPaymentLinkCreateRequest();
+		$createPaylink->setFlexibleAmount(99)
+			->setCurrency('HUF');
+
+		$result = $paymentGateWay->send($createPaylink);
+
+		$this->assertNotEmpty($result->PaymentLinkName, 'No paymentLink name. Error: ' . $result->ResultMessage);
+		return $result;
+	}
+
+	/**
+	 * @test
+	 * @return PaymentGateway\Transport\Response\ResponseInterface
+	 */
+	public function initPaylinkWithFlexibleMinimumMaximumAmount()
+	{
+		$paymentGateWay = $this->getPaymentGateway();
+		$createPaylink = $this->getPaymentLinkCreateRequest();
+		$createPaylink->setFlexibleAmount(99, 100)
+			->setCurrency('HUF');
+
+		$result = $paymentGateWay->send($createPaylink);
+
+		$this->assertNotEmpty($result->PaymentLinkName, 'No paymentLink name. Error: ' . $result->ResultMessage);
+		return $result;
+	}
+
+	/**
+	 * @test
+	 * @return PaymentGateway\Transport\Response\ResponseInterface
+	 */
+	public function initPaylinkWithMultipleTransaction()
+	{
+		$paymentGateWay = $this->getPaymentGateway();
+		$createPaylink = $this->getPaymentLinkCreateRequest();
+		$createPaylink->setAmount(99)
+			->setCurrency('HUF')
+			->setMultipleTransactions(true);
+
+		$result = $paymentGateWay->send($createPaylink);
+
+		$this->assertNotEmpty($result->PaymentLinkName, 'No paymentLink name. Error: ' . $result->ResultMessage);
+		$this->assertEquals(true, $result->MultipleTransactions);
 		return $result;
 	}
 
