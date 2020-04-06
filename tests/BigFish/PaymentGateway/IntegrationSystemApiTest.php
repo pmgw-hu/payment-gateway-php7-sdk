@@ -423,7 +423,18 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 		$details = $this->assertApiResponse(
 			(new PaymentGateway\Request\PaymentLinkDetails())->setPaymentLinkName($paymentlink)
 		)->getData();
-		$this->assertEmpty($details['CommonData']['Extra'], sprintf('Error: %s %s PaymentLinkName: %s', $details['ResultCode'], $details['ResultMessage'], $paymentlink));
+
+		$this->assertNotEmpty($details['CommonData']['Extra'], sprintf('Error: %s %s PaymentLinkName: %s', $details['ResultCode'], $details['ResultMessage'], $paymentlink));
+
+		$extra = json_decode($details['CommonData']['Extra'], true);
+
+		$this->assertEquals($extra['gtcUrl'], 'http://integration.test.bigfish.hu/general-terms-and-conditions');
+		$this->assertEquals($extra['privacyPolicyUrl'], 'http://integration.test.bigfish.hu/privacy-policy');
+		$this->assertEquals($extra['redirectUrl'], 'http://integration.test.bigfish.hu/redirect-url');
+
+		unset($extra['gtcUrl'], $extra['privacyPolicyUrl'], $extra['redirectUrl']);
+
+		$this->assertEmpty($extra, sprintf('Error: %s %s PaymentLinkName: %s', $details['ResultCode'], $details['ResultMessage'], $paymentlink));
 	}
 
 	/**
