@@ -48,7 +48,6 @@ class PaymentLinkCreateTest extends \PHPUnit\Framework\TestCase
 			array('http://test.hu/redirect-url', 'setRedirectUrl'),
 			array('product', 'setInfoForm'),
 			array('service', 'setInfoForm'),
-			array('donation', 'setInfoForm'),
 		);
 	}
 
