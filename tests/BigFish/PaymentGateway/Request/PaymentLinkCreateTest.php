@@ -34,15 +34,20 @@ class PaymentLinkCreateTest extends \PHPUnit\Framework\TestCase
 	{
 		return array(
 			array('TestProvider', 'setProviderName'),
-			array('TestProvider', 'setProviderName'),
 			array('http://test.hu', 'setResponseUrl'),
-			array(100, 'setAmount'),
+			array(true, 'setMultipleTransactions'),
+			array(false, 'setMultipleTransactions'),
 			array(true, 'setEmailNotificationOnlySuccess'),
+			array(false, 'setEmailNotificationOnlySuccess'),
 			array('test@test.com', 'setNotificationEmail'),
 			array('2020-01-01 01:01:01', 'setExpirationTime'),
 			array(12345, 'setOrderId'),
 			array(54321, 'setUserId'),
-			array('EUR', 'setCurrency'),
+			array('http://test.hu/general-terms-and-conditions', 'setGtcUrl'),
+			array('http://test.hu/privacy-policy', 'setPrivacyPolicyUrl'),
+			array('http://test.hu/redirect-url', 'setRedirectUrl'),
+			array('product', 'setInfoForm'),
+			array('service', 'setInfoForm'),
 		);
 	}
 
@@ -50,9 +55,90 @@ class PaymentLinkCreateTest extends \PHPUnit\Framework\TestCase
 	 * @test
 	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
 	 */
-	public function amount_positiveNumberCheck()
+	public function setAmount_fixPositiveNumberCheck()
 	{
 		$this->getRequest()->setAmount(-1);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function setAmount_fixIsZero()
+	{
+		$request = $this->getRequest();
+		$request->setAmount(0);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setAmount_fix()
+	{
+		$request = $this->getRequest();
+		$request->setAmount(100);
+
+		$this->checkAmount($request->getData(), 100, null, null);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function setAmount_flexibleMinimumZeroCheck()
+	{
+		$request = $this->getRequest();
+		$request->setFlexibleAmount(0);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function setAmount_flexibleMinimumPositiveNumberCheck()
+	{
+		$request = $this->getRequest();
+		$request->setFlexibleAmount(-1);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function setAmount_flexibleMaximumCheck()
+	{
+		$request = $this->getRequest();
+		$request->setFlexibleAmount(100, 100);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setAmount_flexibleMinimum()
+	{
+		$request = $this->getRequest();
+		$request->setFlexibleAmount(100);
+
+		$this->checkAmount($request->getData(), null, 100, null);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setAmount_flexibleMinimumMaximum()
+	{
+		$request = $this->getRequest();
+		$request->setFlexibleAmount(100, 101);
+
+		$this->checkAmount($request->getData(), null, 100, 101);
+	}
+
+	protected function checkAmount($data, $amount, $minimumAmount, $maximumAmount)
+	{
+		foreach (array('amount', 'minimumAmount', 'maximumAmount') as $variableName) {
+			$this->assertArrayHasKey($variableName, $data);
+			$this->assertEquals($$variableName, $data[$variableName]);
+		}
 	}
 
 	/**
@@ -69,10 +155,30 @@ class PaymentLinkCreateTest extends \PHPUnit\Framework\TestCase
 	 * @test
 	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
 	 */
-	public function setAmount_isZero()
+	public function setGtcUrl_invalidUrl()
 	{
 		$request = $this->getRequest();
-		$request->setAmount(0);
+		$request->setGtcUrl('invalidUrl');
+	}
+
+	/**
+	 * @test
+	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function setPrivacyPolicyUrl_invalidUrl()
+	{
+		$request = $this->getRequest();
+		$request->setPrivacyPolicyUrl('invalidUrl');
+	}
+
+	/**
+	 * @test
+	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function setRedirectUrl_invalidUrl()
+	{
+		$request = $this->getRequest();
+		$request->setRedirectUrl('invalidUrl');
 	}
 
 	/**
@@ -83,6 +189,16 @@ class PaymentLinkCreateTest extends \PHPUnit\Framework\TestCase
 	{
 		$request = $this->getRequest();
 		$request->setNotificationEmail('test');
+	}
+
+	/**
+	 * @test
+	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function setInfoForm_invalid()
+	{
+		$request = $this->getRequest();
+		$request->setRedirectUrl('invalidInfoForm');
 	}
 
 	/**

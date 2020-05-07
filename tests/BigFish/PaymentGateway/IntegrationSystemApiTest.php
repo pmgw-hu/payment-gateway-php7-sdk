@@ -269,6 +269,20 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 		);
 	}
 
+	protected function getPaymentLinkCreateRequest()
+	{
+		$createPaylink = new PaymentGateway\Request\PaymentLinkCreate();
+		$createPaylink->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
+			->setNotificationUrl('http://integration.test.bigfish.hu')
+			->setNotificationEmail('test@test.com')
+			->setGtcUrl('http://integration.test.bigfish.hu/general-terms-and-conditions')
+			->setPrivacyPolicyUrl('http://integration.test.bigfish.hu/privacy-policy')
+			->setRedirectUrl('http://integration.test.bigfish.hu/redirect-url')
+			->setAutoCommit();
+
+		return $createPaylink;
+	}
+
 	/**
 	 * @test
 	 * @return PaymentGateway\Transport\Response\ResponseInterface
@@ -276,17 +290,66 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	public function initPaylink()
 	{
 		$paymentGateWay = $this->getPaymentGateway();
-		$createPaylink = new PaymentGateway\Request\PaymentLinkCreate();
+		$createPaylink = $this->getPaymentLinkCreateRequest();
 		$createPaylink->setAmount(99)
-			->setCurrency('HUF')
-			->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
-			->setNotificationUrl('http://integration.test.bigfish.hu')
-			->setNotificationEmail('test@test.com')
-			->setAutoCommit();
+			->setCurrency('HUF');
 
 		$result = $paymentGateWay->send($createPaylink);
 
 		$this->assertNotEmpty($result->PaymentLinkName, 'No paymentLink name. Error: ' . $result->ResultMessage);
+		return $result;
+	}
+
+	/**
+	 * @test
+	 * @return PaymentGateway\Transport\Response\ResponseInterface
+	 */
+	public function initPaylinkWithFlexibleMinimumAmount()
+	{
+		$paymentGateWay = $this->getPaymentGateway();
+		$createPaylink = $this->getPaymentLinkCreateRequest();
+		$createPaylink->setFlexibleAmount(99)
+			->setCurrency('HUF');
+
+		$result = $paymentGateWay->send($createPaylink);
+
+		$this->assertNotEmpty($result->PaymentLinkName, 'No paymentLink name. Error: ' . $result->ResultMessage);
+		return $result;
+	}
+
+	/**
+	 * @test
+	 * @return PaymentGateway\Transport\Response\ResponseInterface
+	 */
+	public function initPaylinkWithFlexibleMinimumMaximumAmount()
+	{
+		$paymentGateWay = $this->getPaymentGateway();
+		$createPaylink = $this->getPaymentLinkCreateRequest();
+		$createPaylink->setFlexibleAmount(99, 100)
+			->setCurrency('HUF');
+
+		$result = $paymentGateWay->send($createPaylink);
+
+		$this->assertNotEmpty($result->PaymentLinkName, 'No paymentLink name. Error: ' . $result->ResultMessage);
+		return $result;
+	}
+
+	/**
+	 * @test
+	 * @return PaymentGateway\Transport\Response\ResponseInterface
+	 */
+	public function initPaylinkWithMultipleTransaction()
+	{
+		$paymentGateWay = $this->getPaymentGateway();
+		$createPaylink = $this->getPaymentLinkCreateRequest();
+		$createPaylink->setAmount(99)
+			->setCurrency('HUF')
+			->setMultipleTransactions(true);
+
+		$result = $paymentGateWay->send($createPaylink);
+
+		$this->assertNotEmpty($result->PaymentLinkName, 'No paymentLink name. Error: ' . $result->ResultMessage);
+		$this->assertEquals(true, $result->MultipleTransactions);
 		return $result;
 	}
 
@@ -375,7 +438,18 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 		$details = $this->assertApiResponse(
 			(new PaymentGateway\Request\PaymentLinkDetails())->setPaymentLinkName($paymentlink)
 		)->getData();
-		$this->assertEmpty($details['CommonData']['Extra'], sprintf('Error: %s %s PaymentLinkName: %s', $details['ResultCode'], $details['ResultMessage'], $paymentlink));
+
+		$this->assertNotEmpty($details['CommonData']['Extra'], sprintf('Error: %s %s PaymentLinkName: %s', $details['ResultCode'], $details['ResultMessage'], $paymentlink));
+
+		$extra = json_decode($details['CommonData']['Extra'], true);
+
+		$this->assertEquals($extra['gtcUrl'], 'http://integration.test.bigfish.hu/general-terms-and-conditions');
+		$this->assertEquals($extra['privacyPolicyUrl'], 'http://integration.test.bigfish.hu/privacy-policy');
+		$this->assertEquals($extra['redirectUrl'], 'http://integration.test.bigfish.hu/redirect-url');
+
+		unset($extra['gtcUrl'], $extra['privacyPolicyUrl'], $extra['redirectUrl']);
+
+		$this->assertEmpty($extra, sprintf('Error: %s %s PaymentLinkName: %s', $details['ResultCode'], $details['ResultMessage'], $paymentlink));
 	}
 
 	/**
