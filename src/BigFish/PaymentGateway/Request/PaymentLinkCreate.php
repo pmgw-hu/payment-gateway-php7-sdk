@@ -14,8 +14,6 @@ class PaymentLinkCreate extends InitAbstract
 
 	const INFO_FORM_SERVICE = 'service';
 
-	const INFO_FORM_DONATION = 'donation';
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -148,7 +146,7 @@ class PaymentLinkCreate extends InitAbstract
 	 */
 	public function setInfoForm(string $infoForm): self
 	{
-		if (!in_array($infoForm, [static::INFO_FORM_PRODUCT, static::INFO_FORM_SERVICE, static::INFO_FORM_DONATION], true)) {
+		if (!in_array($infoForm, [static::INFO_FORM_PRODUCT, static::INFO_FORM_SERVICE], true)) {
 			throw new PaymentGatewayException('Invalid information form');
 		}
 
