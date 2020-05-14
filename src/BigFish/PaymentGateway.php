@@ -58,6 +58,7 @@ class PaymentGateway
 	const PROVIDER_OTPAY = 'OTPay';
 	const PROVIDER_OTPAY_MASTERPASS = 'OTPayMP';
 	const PROVIDER_PAYPAL = 'PayPal';
+	const PROVIDER_PAYPALREST = 'PayPalRest';
 	const PROVIDER_PAYSAFECARD = 'PSC';
 	const PROVIDER_PAYSAFECASH = 'Paysafecash';
 	const PROVIDER_PAYU2 = 'PayU2';
@@ -80,6 +81,7 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_OTP_SIMPLE,
 		PaymentGateway::PROVIDER_SAFERPAY,
 		PaymentGateway::PROVIDER_PAYPAL,
+		PaymentGateway::PROVIDER_PAYPALREST,
 		PaymentGateway::PROVIDER_BARION2,
 		PaymentGateway::PROVIDER_BORGUN2,
 		PaymentGateway::PROVIDER_PAYUREST,
