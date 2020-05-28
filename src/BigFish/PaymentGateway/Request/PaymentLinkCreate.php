@@ -154,22 +154,6 @@ class PaymentLinkCreate extends InitAbstract
 	}
 
 	/**
-	 * Set general terms and conditions url
-	 *
-	 * @param string $gtcUrl
-	 * @return $this
-	 * @throws PaymentGatewayException
-	 */
-	public function setGtcUrl(string $gtcUrl): self
-	{
-		if (filter_var($gtcUrl, FILTER_VALIDATE_URL) === false) {
-			throw new PaymentGatewayException('Invalid general terms and conditions url');
-		}
-
-		return $this->setData($gtcUrl, 'gtcUrl');
-	}
-
-	/**
 	 * Set privacy policy url
 	 *
 	 * @param string $privacyPolicyUrl

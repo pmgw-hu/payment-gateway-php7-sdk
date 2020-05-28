@@ -275,7 +275,6 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 		$createPaylink->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
 			->setNotificationUrl('http://integration.test.bigfish.hu')
 			->setNotificationEmail('test@test.com')
-			->setGtcUrl('http://integration.test.bigfish.hu/general-terms-and-conditions')
 			->setPrivacyPolicyUrl('http://integration.test.bigfish.hu/privacy-policy')
 			->setRedirectUrl('http://integration.test.bigfish.hu/redirect-url')
 			->setAutoCommit();
@@ -443,11 +442,10 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 
 		$extra = json_decode($details['CommonData']['Extra'], true);
 
-		$this->assertEquals($extra['gtcUrl'], 'http://integration.test.bigfish.hu/general-terms-and-conditions');
 		$this->assertEquals($extra['privacyPolicyUrl'], 'http://integration.test.bigfish.hu/privacy-policy');
 		$this->assertEquals($extra['redirectUrl'], 'http://integration.test.bigfish.hu/redirect-url');
 
-		unset($extra['gtcUrl'], $extra['privacyPolicyUrl'], $extra['redirectUrl']);
+		unset($extra['privacyPolicyUrl'], $extra['redirectUrl']);
 
 		$this->assertEmpty($extra, sprintf('Error: %s %s PaymentLinkName: %s', $details['ResultCode'], $details['ResultMessage'], $paymentlink));
 	}

@@ -43,7 +43,6 @@ class PaymentLinkCreateTest extends \PHPUnit\Framework\TestCase
 			array('2020-01-01 01:01:01', 'setExpirationTime'),
 			array(12345, 'setOrderId'),
 			array(54321, 'setUserId'),
-			array('http://test.hu/general-terms-and-conditions', 'setGtcUrl'),
 			array('http://test.hu/privacy-policy', 'setPrivacyPolicyUrl'),
 			array('http://test.hu/redirect-url', 'setRedirectUrl'),
 			array('product', 'setInfoForm'),
@@ -149,16 +148,6 @@ class PaymentLinkCreateTest extends \PHPUnit\Framework\TestCase
 	{
 		$request = $this->getRequest();
 		$request->setResponseUrl('invalidUrl');
-	}
-
-	/**
-	 * @test
-	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
-	 */
-	public function setGtcUrl_invalidUrl()
-	{
-		$request = $this->getRequest();
-		$request->setGtcUrl('invalidUrl');
 	}
 
 	/**
