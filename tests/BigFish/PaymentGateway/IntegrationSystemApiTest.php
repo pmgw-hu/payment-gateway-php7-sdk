@@ -143,6 +143,7 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 			(new PaymentGateway\Request\Close())
 				->setTransactionId($this->init())
 				->setApprove(true)
+				->setApprovedAmount(0)
 		);
 	}
 
