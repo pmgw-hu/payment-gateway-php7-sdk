@@ -10,13 +10,14 @@ class CloseTest extends SimpleTransactionRequestAbstract
 {
 	protected function getRequest(string $transactionId): RequestInterface
 	{
-		return (new Close())->setTransactionId($transactionId)->setApprove(false);
+		return (new Close())->setTransactionId($transactionId)->setApprove(true)->setApprovedAmount(1);
 	}
 
 	protected function getDataKeys(): array
 	{
 		$result = parent::getDataKeys();
-		$result['approved'] = 'false';
+		$result['approved'] = 'true';
+		$result['approvedAmount'] = 1;
 		return $result;
 	}
 }
