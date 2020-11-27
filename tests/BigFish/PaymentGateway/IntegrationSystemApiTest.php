@@ -469,6 +469,7 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	/**
 	 * @test
 	 * @return PaymentGateway\Transport\Response\ResponseInterface
+	 * @throws PaymentGateway\Exception\PaymentGatewayException
 	 */
 	public function settlement()
 	{
@@ -482,6 +483,28 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 			->setLimit(100);
 
 		$result = $paymentGateWay->send($settlement);
+
+		$this->assertNotEmpty($result->Data, sprintf('Error: %s - %s', $result->ResultCode, $result->ResultMessage));
+		return $result;
+	}
+
+	/**
+	 * @test
+	 * @return PaymentGateway\Transport\Response\ResponseInterface
+	 * @throws PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function settlementRefund()
+	{
+		$paymentGateWay = $this->getPaymentGateway();
+		$settlementRefund = new PaymentGateway\Request\SettlementRefund();
+		$settlementRefund->setStoreName('sdk_test')
+			->setProviderName(PaymentGateway::PROVIDER_MKB_SZEP)
+			->setTerminalId('111111')
+			->setRefundSettlementDate('2020-11-26')
+			->setRefundSettlementId('72ab2a61')
+			->setLimit(10);
+
+		$result = $paymentGateWay->send($settlementRefund);
 
 		$this->assertNotEmpty($result->Data, sprintf('Error: %s - %s', $result->ResultCode, $result->ResultMessage));
 		return $result;

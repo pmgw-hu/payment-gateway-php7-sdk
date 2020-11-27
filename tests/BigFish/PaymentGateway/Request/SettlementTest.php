@@ -8,18 +8,6 @@ use BigFish\PaymentGateway\Request\Settlement;
 
 class SettlementTest extends \PHPUnit\Framework\TestCase
 {
-
-	/**
-	 * @test
-	 */
-	public function setCurrency_defaultHUF()
-	{
-		$init = $this->getRequest();
-		$init->setTransactionCurrency('HUF');
-		$data = $init->getData();
-		$this->assertEquals('HUF', $data['transactionCurrency']);
-	}
-
 	/**
 	 * @test
 	 * @dataProvider dataProviderFor_parameterTest
