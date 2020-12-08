@@ -3,30 +3,10 @@
 namespace BigFish\Tests\PaymentGateway\Request;
 
 
-use BigFish\PaymentGateway;
 use BigFish\PaymentGateway\Request\Settlement;
 
-class SettlementTest extends \PHPUnit\Framework\TestCase
+class SettlementTest extends SettlementRequestAbstract
 {
-	/**
-	 * @test
-	 * @dataProvider dataProviderFor_parameterTest
-	 * @param $testData
-	 * @param $method
-	 */
-	public function parameterSetTest($testData, $method)
-	{
-		$init = $this->getRequest();
-		$result = $init->$method($testData);
-
-		$variableName = lcfirst(substr($method, 3));
-
-		// test chain
-		$this->assertInstanceOf(get_class($init), $result);
-		$this->assertArrayHasKey($variableName, $init->getData());
-		$this->assertEquals($testData, $init->getData()[$variableName]);
-	}
-
 	/**
 	 * @return array
 	 */
@@ -52,30 +32,5 @@ class SettlementTest extends \PHPUnit\Framework\TestCase
 	protected function getRequest()
 	{
 		return new Settlement();
-	}
-
-	public function testSettlementDefaultData()
-	{
-		$settlement = $this->getRequest();
-		$this->assertEquals(PaymentGateway::NAME, $settlement->getData()['moduleName']);
-		$this->assertEquals(PaymentGateway::VERSION, $settlement->getData()['moduleVersion']);
-	}
-
-	public function testSettlementSetModuleName()
-	{
-		$settlement = $this->getRequest();
-		$settlement->setModuleName('test');
-
-		$this->assertArrayHasKey('moduleName', $settlement->getData());
-		$this->assertEquals('test', $settlement->getData()['moduleName']);
-	}
-
-	public function testSettlementSetModuleVersion()
-	{
-		$settlement = $this->getRequest();
-		$settlement->setModuleVersion('42');
-
-		$this->assertArrayHasKey('moduleVersion', $settlement->getData());
-		$this->assertEquals('42', $settlement->getData()['moduleVersion']);
 	}
 }
