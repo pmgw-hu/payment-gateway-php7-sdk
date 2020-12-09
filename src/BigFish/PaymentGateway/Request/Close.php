@@ -14,4 +14,15 @@ class Close extends SimpleRequestAbstract
 	{
 		return $this->setData($approve ? 'true' : 'false', 'approved');
 	}
+
+	/**
+	 * Set approved amount
+	 *
+	 * @param float $approvedAmount Approved amount
+	 * @return $this
+	 */
+	public function setApprovedAmount(float $approvedAmount): self
+	{
+		return $this->setData($approvedAmount, 'approvedAmount');
+	}
 }

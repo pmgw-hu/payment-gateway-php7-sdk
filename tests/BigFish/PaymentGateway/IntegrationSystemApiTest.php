@@ -101,6 +101,26 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 
 	/**
 	 * @test
+	 * @return
+	 * @throws PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function initAutoCommitFalse()
+	{
+		$paymentGateWay = $this->getPaymentGateway();
+		$init = new PaymentGateway\Request\Init();
+		$init->setAmount(10)
+			->setCurrency('EUR')
+			->setProviderName(PaymentGateway::PROVIDER_SAFERPAY)
+			->setResponseUrl('http://integration.test.bigfish.hu')
+			->setAutoCommit(false);
+
+		$result = $paymentGateWay->send($init);
+		$this->assertNotEmpty($result->TransactionId, 'No transaction id. Error: ' . $result->ResultMessage);
+		return $result->TransactionId;
+	}
+
+	/**
+	 * @test
 	 * @depends init
 	 * @runInSeparateProcess
 	 */
@@ -134,28 +154,43 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 
 	/**
 	 * @test
-	 * @depends init
+	 * @depends initAutoCommitFalse
 	 * @runInSeparateProcess
 	 */
-	public function close_approved()
+	public function closeApprovedFull()
 	{
 		$this->assertApiResponse(
 			(new PaymentGateway\Request\Close())
-				->setTransactionId($this->init())
+				->setTransactionId($this->initAutoCommitFalse())
 				->setApprove(true)
 		);
 	}
 
 	/**
 	 * @test
-	 * @depends init
+	 * @depends initAutoCommitFalse
 	 * @runInSeparateProcess
 	 */
-	public function close_notApproved()
+	public function closeApprovedPartial()
 	{
 		$this->assertApiResponse(
 			(new PaymentGateway\Request\Close())
-				->setTransactionId($this->init())
+				->setTransactionId($this->initAutoCommitFalse())
+				->setApprove(true)
+				->setApprovedAmount(3)
+		);
+	}
+
+	/**
+	 * @test
+	 * @depends initAutoCommitFalse
+	 * @runInSeparateProcess
+	 */
+	public function closeNotApproved()
+	{
+		$this->assertApiResponse(
+			(new PaymentGateway\Request\Close())
+				->setTransactionId($this->initAutoCommitFalse())
 				->setApprove(false)
 		);
 	}
@@ -382,7 +417,7 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	 * @test
 	 * @return PaymentGateway\Transport\Response\ResponseInterface
 	 */
-	public function initPaylink_missingParameter()
+	public function initPaylinkMissingParameter()
 	{
 		$paymentGateWay = $this->getPaymentGateway();
 		$createPaylink = new PaymentGateway\Request\PaymentLinkCreate();
