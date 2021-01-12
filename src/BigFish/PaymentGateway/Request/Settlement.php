@@ -2,49 +2,10 @@
 
 namespace BigFish\PaymentGateway\Request;
 
-use BigFish\PaymentGateway\Exception\PaymentGatewayException;
 
-class Settlement extends InitBaseAbstract
+class Settlement extends SettlementBaseAbstract
 {
 	const REQUEST_TYPE = 'Settlement';
-
-	/**
-	 * @param int $limit
-	 * @return $this
-	 * @throws PaymentGatewayException
-	 */
-	public function setLimit(int $limit): self
-	{
-		return $this->setData($limit, 'limit');
-	}
-
-	/**
-	 * @param int $offset
-	 * @return $this
-	 * @throws PaymentGatewayException
-	 */
-	public function setOffset(int $offset): self
-	{
-		return $this->setData($offset, 'offset');
-	}
-
-	/**
-	 * @param bool $getItems
-	 * @return $this
-	 */
-	public function setGetItems(bool $getItems): self
-	{
-		return $this->setData($getItems, 'getItems');
-	}
-
-	/**
-	 * @param bool $getBatches
-	 * @return $this
-	 */
-	public function setGetBatches(bool $getBatches): self
-	{
-		return $this->setData($getBatches, 'getBatches');
-	}
 
 	/**
 	 * @param string $transferNotice
@@ -62,15 +23,6 @@ class Settlement extends InitBaseAbstract
 	public function setSettlementDate(string $date): self
 	{
 		return $this->setData($date, 'settlementDate');
-	}
-
-	/**
-	 * @param string $terminalId
-	 * @return $this
-	 */
-	public function setTerminalId(string $terminalId): self
-	{
-		return $this->setData($terminalId, 'terminalId');
 	}
 
 	/**

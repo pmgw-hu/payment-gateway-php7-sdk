@@ -1,13 +1,18 @@
 before_script:
   - pwd
 
-Syntax check php7:
+Syntax check php7.2:
   image: php:7.2
   script: find . -name \*.php -exec php -l "{}" \;
   stage: build
 
+Syntax check php7.3:
+  image: php:7.3
+  script: find . -name \*.php -exec php -l "{}" \;
+  stage: build
+
 Copy paste detection:
-  image: php:7.2
+  image: php:7.3
   script:
     - apt-get update && apt-get install -y wget
     - wget https://phar.phpunit.de/phpcpd.phar
