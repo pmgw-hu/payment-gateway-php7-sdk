@@ -43,7 +43,7 @@ class Response implements ResponseInterface
 	{
 		$static = new static();
 		$result = [];
-		static::getObjectVars($result, $object);
+		static::getObjectVars($object, $result);
 		$static->setData($result);
 		return $static;
 	}
@@ -52,7 +52,7 @@ class Response implements ResponseInterface
 	 * @param array $result
 	 * @param \stdClass $object
 	 */
-	protected static function getObjectVars(&$result = [], \stdClass $object)
+	protected static function getObjectVars(\stdClass $object, &$result = [])
 	{
 		foreach (get_object_vars($object) as $name => $value) {
 			if (!is_object($value)) {
@@ -65,7 +65,7 @@ class Response implements ResponseInterface
 			}
 
 			$result[$name] = [];
-			static::getObjectVars($result[$name], $value);
+			static::getObjectVars($value, $result[$name]);
 		}
 	}
 
