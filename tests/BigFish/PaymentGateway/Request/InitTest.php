@@ -168,12 +168,18 @@ class InitTest extends InitRPTest
 		$init->setOneClickPayment();
 		$init->setOneClickReferenceId('testData');
 		$init->setOneClickForcedRegistration();
+		$init->setPaymentRegistration();
+		$init->setPaymentRegistrationType(PaymentGateway::PAYMENT_REGISTRATION_TYPE_MERCHANT_INITIATED);
+		$init->setReferenceTransactionId('testData');
 		$init->setExtra();
 
 		$data = $init->getData();
 		$this->assertArrayNotHasKey('oneClickPayment', $data);
 		$this->assertArrayNotHasKey('oneClickReferenceId', $data);
 		$this->assertArrayNotHasKey('oneClickForcedRegistration', $data);
+		$this->assertArrayNotHasKey('paymentRegistration', $data);
+		$this->assertArrayNotHasKey('paymentRegistrationType', $data);
+		$this->assertArrayNotHasKey('referenceTransactionId', $data);
 	}
 
 	/**
@@ -186,12 +192,18 @@ class InitTest extends InitRPTest
 		$init->setOneClickPayment();
 		$init->setOneClickReferenceId('testData');
 		$init->setOneClickForcedRegistration();
+		$init->setPaymentRegistration();
+		$init->setPaymentRegistrationType(PaymentGateway::PAYMENT_REGISTRATION_TYPE_MERCHANT_INITIATED);
+		$init->setReferenceTransactionId('testData');
 		$init->setExtra();
 
 		$data = $init->getData();
 		$this->assertArrayHasKey('oneClickPayment', $data);
 		$this->assertArrayHasKey('oneClickReferenceId', $data);
 		$this->assertArrayNotHasKey('oneClickForcedRegistration', $data);
+		$this->assertArrayHasKey('paymentRegistration', $data);
+		$this->assertArrayHasKey('paymentRegistrationType', $data);
+		$this->assertArrayHasKey('referenceTransactionId', $data);
 	}
 
 	/**

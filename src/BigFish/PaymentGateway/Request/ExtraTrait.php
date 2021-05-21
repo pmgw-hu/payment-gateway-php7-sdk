@@ -137,6 +137,18 @@ trait ExtraTrait
 			unset($this->data['oneClickForcedRegistration']);
 		}
 
+		if (!(in_array($providerName, PaymentGateway::$oneClickProviders) && isset($this->data['paymentRegistration']))) {
+			unset($this->data['paymentRegistration']);
+		}
+
+		if (!(in_array($providerName, PaymentGateway::$oneClickProviders) && isset($this->data['paymentRegistrationType']))) {
+			unset($this->data['paymentRegistrationType']);
+		}
+
+		if (!(in_array($providerName, PaymentGateway::$oneClickProviders) && isset($this->data['referenceTransactionId']))) {
+			unset($this->data['referenceTransactionId']);
+		}
+
 		unset($this->data['otpCardNumber']);
 		unset($this->data['otpExpiration']);
 		unset($this->data['otpCvc']);

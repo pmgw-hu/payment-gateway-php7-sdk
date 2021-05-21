@@ -104,6 +104,31 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	 * @return
 	 * @throws PaymentGateway\Exception\PaymentGatewayException
 	 */
+	public function initBorgunPaymentRegistration()
+	{
+		$paymentGateWay = $this->getPaymentGateway();
+		$init = new PaymentGateway\Request\Init();
+		$init->setAmount(99)
+			->setUserId(123)
+			->setOrderId(123)
+			->setCurrency('HUF')
+			->setPaymentRegistration()
+			->setPaymentRegistrationType(PaymentGateway::PAYMENT_REGISTRATION_TYPE_MERCHANT_INITIATED)
+			->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
+			->setResponseUrl('http://integration.test.bigfish.hu')
+			->setAutoCommit()
+			->setExtra();
+
+		$result = $paymentGateWay->send($init);
+		$this->assertNotEmpty($result->TransactionId, 'No transaction id. Error: ' . $result->ResultMessage);
+		return $result->TransactionId;
+	}
+
+	/**
+	 * @test
+	 * @return
+	 * @throws PaymentGateway\Exception\PaymentGatewayException
+	 */
 	public function initAutoCommitFalse()
 	{
 		$paymentGateWay = $this->getPaymentGateway();
@@ -241,12 +266,27 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	 * @depends init
 	 * @runInSeparateProcess
 	 */
-	public function OneClickOptions()
+	public function oneClickOptions()
 	{
 		$this->assertApiResponse(
 			(new PaymentGateway\Request\OneClickOptions())
 				->setProviderName(PaymentGateway::PROVIDER_OTP_SIMPLE)
 				->setUserId('BF-TEST-USER-REG')
+		);
+	}
+
+	/**
+	 * @test
+	 * @depends init
+	 * @runInSeparateProcess
+	 */
+	public function getPaymentRegistrations()
+	{
+		$this->assertApiResponse(
+			(new PaymentGateway\Request\GetPaymentRegistrations())
+				->setProviderName(PaymentGateway::PROVIDER_OTP_SIMPLE)
+				->setUserId('BF-TEST-USER-REG')
+				->setPaymentRegistrationType(PaymentGateway::PAYMENT_REGISTRATION_TYPE_MERCHANT_INITIATED)
 		);
 	}
 
@@ -299,6 +339,46 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	{
 		$this->assertApiResponse(
 			(new PaymentGateway\Request\OneClickTokenCancelAll())
+				->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
+				->setUserId('sdk_test')
+		);
+	}
+
+	/**
+	 * @test
+	 * @depends init
+	 * @runInSeparateProcess
+	 */
+	public function oneClickTokenCancel()
+	{
+		$this->assertApiResponse(
+			(new PaymentGateway\Request\OneClickTokenCancel())
+				->setTransactionId($this->initBorgun())
+		);
+	}
+
+	/**
+	 * @test
+	 * @depends init
+	 * @runInSeparateProcess
+	 */
+	public function cancelPaymentRegistration()
+	{
+		$this->assertApiResponse(
+			(new PaymentGateway\Request\CancelPaymentRegistration())
+				->setTransactionId($this->initBorgunPaymentRegistration())
+		);
+	}
+
+	/**
+	 * @test
+	 * @depends init
+	 * @runInSeparateProcess
+	 */
+	public function cancelAllPaymentRegistrations()
+	{
+		$this->assertApiResponse(
+			(new PaymentGateway\Request\CancelAllPaymentRegistrations())
 				->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
 				->setUserId('sdk_test')
 		);

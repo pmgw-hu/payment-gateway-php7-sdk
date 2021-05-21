@@ -14,7 +14,8 @@ class InfoOrderRecurringPaymentTest extends InfoAbstractTest
 	{
 		return array(
 			array('2030-02-05', 'setExpireDate'),
-			array(22, 'setFrequency')
+			array(22, 'setFrequency'),
+			array('01', 'setAmountIndicator'),
 		);
 	}
 

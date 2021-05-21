@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '3.7.0';
+	const VERSION = '3.8.0';
 
 	/**
 	 * SDK Name
@@ -99,6 +99,13 @@ class PaymentGateway
 	const RESULT_CODE_USER_CANCEL = 'CANCELED';
 	const RESULT_CODE_TIMEOUT = 'TIMEOUT';
 	const RESULT_CODE_OPEN = 'OPEN';
+
+	/**
+	 * Payment registration types
+	 */
+	const PAYMENT_REGISTRATION_TYPE_LEGACY = 'OLD';
+	const PAYMENT_REGISTRATION_TYPE_CUSTOMER_INITIATED = 'CIT';
+	const PAYMENT_REGISTRATION_TYPE_MERCHANT_INITIATED = 'MIT';
 
 	/**
 	 * @var Config

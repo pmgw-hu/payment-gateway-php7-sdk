@@ -101,6 +101,35 @@ class Init extends InitAbstract
 	}
 
 	/**
+	 * @param bool | null $paymentRegistration
+	 * @return $this
+	 */
+	public function setPaymentRegistration($paymentRegistration = true): self
+	{
+		$paymentRegistration = is_null($paymentRegistration) ? null : (int)filter_var($paymentRegistration, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+
+		return $this->setData($paymentRegistration, 'paymentRegistration');
+	}
+
+	/**
+	 * @param string $paymentRegistrationType
+	 * @return $this
+	 */
+	public function setPaymentRegistrationType(string $paymentRegistrationType): self
+	{
+		return $this->setData($paymentRegistrationType, 'paymentRegistrationType');
+	}
+
+	/**
+	 * @param string $referenceTransactionId
+	 * @return $this
+	 */
+	public function setReferenceTransactionId(string $referenceTransactionId): self
+	{
+		return $this->setData($referenceTransactionId, 'referenceTransactionId');
+	}
+
+	/**
 	 * @param bool $autoCommit
 	 * @return $this
 	 */

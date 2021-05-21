@@ -14,6 +14,7 @@ class InfoOrderRecurringPayment extends InfoOrder
 
 	const EXPIRE_DATE = 'expireDate';
 	const FREQUENCY = 'frequency';
+	const AMOUNT_INDICATOR = 'amountIndicator';
 
 	public function setExpireDate(string $expireDate): self
 	{
@@ -23,5 +24,10 @@ class InfoOrderRecurringPayment extends InfoOrder
 	public function setFrequency(string $frequency): self
 	{
 		return $this->setData($frequency, self::FREQUENCY);
+	}
+
+	public function setAmountIndicator(string $amountIndicator): self
+	{
+		return $this->setData($amountIndicator, self::AMOUNT_INDICATOR);
 	}
 }

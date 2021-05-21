@@ -2,7 +2,7 @@
 
 ## Version
 
-3.7.0
+3.8.0
 
 ## Requirements
 
@@ -112,19 +112,19 @@ $response = $paymentGateway->send(
     );
 ```
 
-#### One click token cancel request
+#### Cancel payment registration request
 
 ```php
 $response = $paymentGateway->send(
-        (new \BigFish\PaymentGateway\Request\OneClickTokenCancel())->setTransactionId($transactionId)
+        (new \BigFish\PaymentGateway\Request\CancelPaymentRegistration())->setTransactionId($transactionId)
     );
 ```
 
-#### All one click token cancel request
+#### Cancel all payment registrations request
 
 ```php
 $response = $paymentGateway->send(
-        (new \BigFish\PaymentGateway\Request\OneClickTokenCancelAll())
+        (new \BigFish\PaymentGateway\Request\CancelAllPaymentRegistrations())
             ->setProviderName(\BigFish\PaymentGateway::PROVIDER_BORGUN2)
             ->setUserId('userId')
     );
