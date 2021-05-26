@@ -3,7 +3,7 @@
 namespace BigFish\PaymentGateway\Request;
 
 
-class CancelPaymentRegistration extends OneClickTokenCancel
+class CancelPaymentRegistration extends SimpleRequestAbstract
 {
 	const REQUEST_TYPE = 'CancelPaymentRegistration';
 }

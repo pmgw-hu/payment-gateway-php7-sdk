@@ -185,6 +185,22 @@ class InitTest extends InitRPTest
 	/**
 	 * @test
 	 */
+	public function setExtra_noOneClickProvider_paymentRegistrationIsNull()
+	{
+		$init = $this->getRequest();
+		$init->setProviderName(PaymentGateway::PROVIDER_FHB);
+		$config = new PaymentGateway\Config();
+		$init->setEncryptKey($config->getEncryptPublicKey());
+		$init->setPaymentRegistration(null);
+		$init->setExtra();
+
+		$data = $init->getData();
+		$this->assertArrayNotHasKey('paymentRegistration', $data);
+	}
+
+	/**
+	 * @test
+	 */
 	public function setExtra_OneClickProvider()
 	{
 		$init = $this->getRequest();
@@ -204,6 +220,20 @@ class InitTest extends InitRPTest
 		$this->assertArrayHasKey('paymentRegistration', $data);
 		$this->assertArrayHasKey('paymentRegistrationType', $data);
 		$this->assertArrayHasKey('referenceTransactionId', $data);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setExtra_OneClickProvider_paymentRegistrationIsNull()
+	{
+		$init = $this->getRequest();
+		$init->setProviderName(PaymentGateway::PROVIDER_BORGUN2);
+		$init->setPaymentRegistration(null);
+		$init->setExtra();
+
+		$data = $init->getData();
+		$this->assertArrayHasKey('paymentRegistration', $data);
 	}
 
 	/**

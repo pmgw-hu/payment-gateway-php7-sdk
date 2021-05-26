@@ -104,31 +104,6 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	 * @return
 	 * @throws PaymentGateway\Exception\PaymentGatewayException
 	 */
-	public function initBorgunPaymentRegistration()
-	{
-		$paymentGateWay = $this->getPaymentGateway();
-		$init = new PaymentGateway\Request\Init();
-		$init->setAmount(99)
-			->setUserId(123)
-			->setOrderId(123)
-			->setCurrency('HUF')
-			->setPaymentRegistration()
-			->setPaymentRegistrationType(PaymentGateway::PAYMENT_REGISTRATION_TYPE_MERCHANT_INITIATED)
-			->setProviderName(PaymentGateway::PROVIDER_BORGUN2)
-			->setResponseUrl('http://integration.test.bigfish.hu')
-			->setAutoCommit()
-			->setExtra();
-
-		$result = $paymentGateWay->send($init);
-		$this->assertNotEmpty($result->TransactionId, 'No transaction id. Error: ' . $result->ResultMessage);
-		return $result->TransactionId;
-	}
-
-	/**
-	 * @test
-	 * @return
-	 * @throws PaymentGateway\Exception\PaymentGatewayException
-	 */
 	public function initAutoCommitFalse()
 	{
 		$paymentGateWay = $this->getPaymentGateway();
@@ -366,7 +341,7 @@ class IntegrationSystemApiTest extends IntegrationAbstract
 	{
 		$this->assertApiResponse(
 			(new PaymentGateway\Request\CancelPaymentRegistration())
-				->setTransactionId($this->initBorgunPaymentRegistration())
+				->setTransactionId($this->initBorgun())
 		);
 	}
 

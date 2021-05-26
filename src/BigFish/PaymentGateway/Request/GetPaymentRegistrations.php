@@ -7,11 +7,6 @@ class GetPaymentRegistrations extends InitBaseAbstract
 {
 	const REQUEST_TYPE = 'GetPaymentRegistrations';
 
-	public function __construct()
-	{
-		parent::__construct();
-	}
-
 	/**
 	 * @param string $userId
 	 * @return $this
