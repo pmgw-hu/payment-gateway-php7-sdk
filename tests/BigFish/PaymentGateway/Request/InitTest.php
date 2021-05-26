@@ -233,7 +233,7 @@ class InitTest extends InitRPTest
 		$init->setExtra();
 
 		$data = $init->getData();
-		$this->assertArrayHasKey('paymentRegistration', $data);
+		$this->assertArrayNotHasKey('paymentRegistration', $data);
 	}
 
 	/**
