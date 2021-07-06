@@ -87,6 +87,16 @@ class InitRPTest extends \PHPUnit\Framework\TestCase
 	}
 
 	/**
+	 * @test
+	 * @expectedException \BigFish\PaymentGateway\Exception\PaymentGatewayException
+	 */
+	public function setAmount_isNegativ()
+	{
+		$request = $this->getRequest();
+		$request->setAmount(-1);
+	}
+
+	/**
 	 * @return InitRP
 	 */
 	protected function getRequest()

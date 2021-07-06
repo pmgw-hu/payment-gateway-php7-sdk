@@ -15,4 +15,15 @@ abstract class RequestAbstract extends BaseAbstract implements RequestInterface
 	{
 		return static::REQUEST_TYPE;
 	}
+
+	/**
+	 * URL safe encode (base64)
+	 *
+	 * @param string $string
+	 * @return string
+	 */
+	protected function urlSafeEncode(string $string): string
+	{
+		return str_replace(['+', '/', '='], ['-', '_', '.'], base64_encode($string));
+	}
 }

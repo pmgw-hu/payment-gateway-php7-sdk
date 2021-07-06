@@ -11,6 +11,21 @@ class Init extends InitAbstract
 	const REQUEST_TYPE = 'Init';
 
 	/**
+	 * Set payment transaction amount
+	 *
+	 * @param float $amount Transaction amount
+	 * @return $this
+	 * @throws PaymentGatewayException
+	 */
+	public function setAmount(float $amount): InitAbstract
+	{
+		if ($amount < 0) {
+			throw new PaymentGatewayException('Only positive or zero numbers allowed.');
+		}
+		return $this->setData($amount, 'amount');
+	}
+
+	/**
 	 * @param string $notificationUrl
 	 * @return $this
 	 * @throws PaymentGatewayException

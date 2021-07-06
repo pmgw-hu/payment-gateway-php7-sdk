@@ -72,7 +72,18 @@ class InitTest extends InitRPTest
 			),
 			$init->getData()
 		);
+	}
 
+	/**
+	 * @test
+	 */
+	public function setAmount_isZero()
+	{
+		$amount = 0;
+
+		$request = $this->getRequest();
+		$request->setAmount($amount);
+		$this->assertEquals($amount, $request->getData()['amount']);
 	}
 
 	/**
