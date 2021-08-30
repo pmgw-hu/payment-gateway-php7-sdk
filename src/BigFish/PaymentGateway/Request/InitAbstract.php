@@ -80,15 +80,4 @@ abstract class InitAbstract extends InitBaseAbstract
 	{
 		return $this->setData($this->urlSafeEncode(json_encode($info->getData())), 'info');
 	}
-
-	/**
-	 * URL safe encode (base64)
-	 *
-	 * @param string $string
-	 * @return string
-	 */
-	protected function urlSafeEncode(string $string): string
-	{
-		return str_replace(['+', '/', '='], ['-', '_', '.'], base64_encode($string));
-	}
 }

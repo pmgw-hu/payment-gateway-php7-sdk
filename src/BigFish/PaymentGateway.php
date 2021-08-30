@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '3.8.0';
+	const VERSION = '3.9.0';
 
 	/**
 	 * SDK Name
@@ -106,6 +106,12 @@ class PaymentGateway
 	const PAYMENT_REGISTRATION_TYPE_LEGACY = 'OLD';
 	const PAYMENT_REGISTRATION_TYPE_CUSTOMER_INITIATED = 'CIT';
 	const PAYMENT_REGISTRATION_TYPE_MERCHANT_INITIATED = 'MIT';
+
+	/**
+	 * Payout types
+	 */
+	const PAYOUT_TYPE_FUNDS_DISBURSEMENT = 'B2P';
+	const PAYOUT_TYPE_GAMBLING = 'WIN';
 
 	/**
 	 * @var Config

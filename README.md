@@ -2,7 +2,7 @@
 
 ## Version
 
-3.8.0
+3.9.0
 
 ## Requirements
 
@@ -112,6 +112,18 @@ $response = $paymentGateway->send(
     );
 ```
 
+#### Payout request
+
+```php
+$payout = new \BigFish\PaymentGateway\Request\Payout();
+$payout->setPayoutType(\BigFish\PaymentGateway::PAYOUT_TYPE_FUNDS_DISBURSEMENT)
+    ->setReferenceTransactionId("783593c87fee4d372f47f53840028682")
+    ->setAmount(200)
+    ->setOrderId("BF-TEST-ORDER-REG"); // your custom order id
+
+$response = $paymentGateway->send($payout);
+```
+
 #### Cancel payment registration request
 
 ```php
@@ -192,6 +204,13 @@ $response = $paymentGateway->send(
 
 ```php
 $infoObject = new \BigFish\PaymentGateway\Data\Info();
+
+$infoCustomerGeneral = new \BigFish\PaymentGateway\Data\Info\Customer\InfoCustomerGeneral();
+$infoCustomerGeneral->setFirstName("John")
+    ->setLastName("Doe")
+    ->setEmail("test@testmail.com");
+
+$infoObject->setObject($infoCustomerGeneral); //add $infoCustomerGeneral to $infoObject
  
 $infoShipping = new \BigFish\PaymentGateway\Data\Info\Order\InfoOrderShippingData();
 $infoShipping->setFirstName("John")
@@ -212,7 +231,7 @@ $infoOrderProductItem->setSku("PMG055005")
     ->setImageUrl("http://webhsop/product11.jpg")
     ->setDescription("Product11 desc.");
 
-$infoObject->setObject($infoOrderProductItem); //add $infoShipping to $infoObject
+$infoObject->setObject($infoOrderProductItem); //add $infoOrderProductItem to $infoObject
  
 $infoOrderProductItem = new \BigFish\PaymentGateway\Data\Info\Order\InfoOrderProductItem();
 $infoOrderProductItem->setSku("PMG055008")
@@ -223,7 +242,7 @@ $infoOrderProductItem->setSku("PMG055008")
     ->setImageUrl("http://webhsop/product12.jpg")
     ->setDescription("Product12 desc.");
 
-$infoObject->setObject($infoOrderProductItem); //add $infoShipping to $infoObject
+$infoObject->setObject($infoOrderProductItem); //add $infoOrderProductItem to $infoObject
 ```
 
 #### Init
@@ -231,6 +250,14 @@ $infoObject->setObject($infoOrderProductItem); //add $infoShipping to $infoObjec
 ```php
 ...
     $init->setInfo($infoObject);
+...
+```
+
+#### Payout
+
+```php
+...
+    $payout->setInfo($infoObject);
 ...
 ```
 
