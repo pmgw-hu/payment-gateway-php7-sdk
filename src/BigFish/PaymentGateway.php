@@ -70,6 +70,7 @@ class PaymentGateway
 	const PROVIDER_VIRPAY = 'Virpay';
 	const PROVIDER_WIRECARD_QPAY = 'QPAY';
 	const PROVIDER_WIRECARD = 'Wirecard';
+	const PROVIDER_VIVAWALLET = 'VivaWallet';
 
 	/**
 	 * Valid OneClickPayment providers
