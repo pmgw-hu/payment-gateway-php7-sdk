@@ -17,7 +17,7 @@ class PayoutTest extends \PHPUnit\Framework\TestCase
 			array('23234', 'setReferenceTransactionId'),
 			array(100, 'setAmount'),
 			array(12345, 'setOrderId'),
-			array('test message', 'setAdditionalMessage'),
+			array('BF-TEST-PAYOUT-MESSAGE', 'setAdditionalMessage'),
 		);
 	}
 
