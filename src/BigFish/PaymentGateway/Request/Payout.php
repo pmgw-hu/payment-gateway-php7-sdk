@@ -70,6 +70,17 @@ class Payout extends RequestAbstract
 	}
 
 	/**
+	 * Additional message that the card acceptor might want to provide
+	 *
+	 * @param mixed $additionalMessage Additional message
+	 * @return $this
+	 */
+	public function setAdditionalMessage(string $additionalMessage): self
+	{
+		return $this->setData($additionalMessage, 'additionalMessage');
+	}
+
+	/**
 	 * @param Info $info
 	 * @return $this
 	 */
