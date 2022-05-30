@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '3.9.0';
+	const VERSION = '3.10.0';
 
 	/**
 	 * SDK Name
@@ -63,6 +63,7 @@ class PaymentGateway
 	const PROVIDER_PAYSAFECASH = 'Paysafecash';
 	const PROVIDER_PAYU2 = 'PayU2';
 	const PROVIDER_PAYUREST = 'PayURest';
+	const PROVIDER_RAIFFEISENPAY = 'RaiffeisenPay';
 	const PROVIDER_SAFERPAY = 'Saferpay';
 	const PROVIDER_SMS = 'SMS';
 	const PROVIDER_SOFORT = 'Sofort';
