@@ -119,7 +119,8 @@ $payout = new \BigFish\PaymentGateway\Request\Payout();
 $payout->setPayoutType(\BigFish\PaymentGateway::PAYOUT_TYPE_FUNDS_DISBURSEMENT)
     ->setReferenceTransactionId("783593c87fee4d372f47f53840028682")
     ->setAmount(200)
-    ->setOrderId("BF-TEST-ORDER-REG"); // your custom order id
+    ->setOrderId("BF-TEST-ORDER-REG") // your custom order id
+    ->setAdditionalMessage("BF-TEST-PAYOUT-MESSAGE");
 
 $response = $paymentGateway->send($payout);
 ```

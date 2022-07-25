@@ -63,6 +63,7 @@ class PaymentGateway
 	const PROVIDER_PAYSAFECASH = 'Paysafecash';
 	const PROVIDER_PAYU2 = 'PayU2';
 	const PROVIDER_PAYUREST = 'PayURest';
+	const PROVIDER_RAIFFEISENPAY = 'RaiffeisenPay';
 	const PROVIDER_SAFERPAY = 'Saferpay';
 	const PROVIDER_SMS = 'SMS';
 	const PROVIDER_SOFORT = 'Sofort';
