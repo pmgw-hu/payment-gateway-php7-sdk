@@ -1,11 +1,9 @@
 <?php
 
-namespace BigFish\Tests\Request;
-
+namespace BigFish\Tests\PaymentGateway\Request;
 
 use BigFish\PaymentGateway;
 use BigFish\PaymentGateway\Request\Init;
-use BigFish\Tests\PaymentGateway\Request\InitRPTest;
 
 class InitTest extends InitRPTest
 {

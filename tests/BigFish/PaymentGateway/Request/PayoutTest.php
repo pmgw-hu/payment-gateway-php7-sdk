@@ -1,6 +1,6 @@
 <?php
 
-namespace BigFish\Tests\Request;
+namespace BigFish\Tests\PaymentGateway\Request;
 
 use BigFish\PaymentGateway;
 use BigFish\PaymentGateway\Request\Payout;
