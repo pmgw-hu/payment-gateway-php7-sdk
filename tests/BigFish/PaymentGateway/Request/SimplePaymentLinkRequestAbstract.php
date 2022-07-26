@@ -14,7 +14,7 @@ abstract class SimplePaymentLinkRequestAbstract extends SimpleRequestAbstract
 	 * @param string $paymentLinkName
 	 * @return RequestInterface
 	 */
-    abstract protected function getRequest(string $paymentLinkName): RequestInterface;
+	abstract protected function getRequest(string $paymentLinkName): RequestInterface;
 
 	/**
 	 * @return array
@@ -26,17 +26,17 @@ abstract class SimplePaymentLinkRequestAbstract extends SimpleRequestAbstract
 		);
 	}
 
-    /**
-     * @param \Closure $function
-     */
-    protected function getDataWithRequestFunction(\Closure $function)
-    {
-        $dataKeys = $this->getDataKeys();
+	/**
+	 * @param \Closure $function
+	 */
+	protected function getDataWithRequestFunction(\Closure $function)
+	{
+		$dataKeys = $this->getDataKeys();
 		$transactionId = $dataKeys[self::PAYMENT_LINK_NAME] ?? 0;
-        $req = $this->getRequest($transactionId);
-        $this->assertNotEmpty($req->getData());
-        foreach ($dataKeys as $dataKey => $value) {
-            $function($dataKey, $value, $req);
-        }
-    }
+		$req = $this->getRequest($transactionId);
+		$this->assertNotEmpty($req->getData());
+		foreach ($dataKeys as $dataKey => $value) {
+			$function($dataKey, $value, $req);
+		}
+	}
 }
