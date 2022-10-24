@@ -23,25 +23,28 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
 	/**
 	 * @return array
 	 */
-	public function DataProviderFor_setDataViaMagicAndValidate()
+	public function DataProviderFor_setDataViaMagicAndValidate(): array
 	{
-		return array(
-			array(
-					'something', 'storeName', 'getStoreName',
-			),
-			array(
-					'thisIsTheApuKeyWithX$ˆ1d', 'apiKey', 'getApiKey',
-			),
-			array(
-					"-------\n\rt*rXdFed#Y#ˇag\n\r-------", 'encryptPublicKey', 'getEncryptPublicKey',
-			),
-			array(
+		return [
+			[
+				'something', 'storeName', 'getStoreName',
+			],
+			[
+				'thisIsTheApuKeyWithX$ˆ1d', 'apiKey', 'getApiKey',
+			],
+			[
+				"-------\n\rt*rXdFed#Y#ˇag\n\r-------", 'encryptPublicKey', 'getEncryptPublicKey',
+			],
+			[
 				Config::CHARSET_LATIN1, 'outCharset', 'getOutCharset'
-			),
-			array(
-					true, 'testMode', 'isTestMode'
-			)
-		);
+			],
+			[
+				true, 'testMode', 'isTestMode'
+			],
+			[
+				'1.1.1.1:80', 'gatewayProxy', 'getGatewayProxy'
+			],
+		];
 	}
 
 	/**

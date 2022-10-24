@@ -9,22 +9,24 @@ use BigFish\PaymentGateway;
  * Class Config
  * @package BigFish
  *
+ * @property bool $testMode
  * @property string $storeName
  * @property string $apiKey
+ * @property string $outCharset
  * @property string $encryptPublicKey
- * @property bool $testMode
+ * @property string $moduleName
+ * @property string $moduleVersion
+ * @property string $gatewayProxy
  */
 class Config
 {
 	/**
 	 * Default store name
-	 *
 	 */
 	const SDK_TEST_STORE_NAME = 'sdk_test';
 
 	/**
 	 * Default API key
-	 *
 	 */
 	const SDK_TEST_API_KEY = '86af3-80e4f-f8228-9498f-910ad';
 
@@ -63,31 +65,45 @@ XIm63iVw6gjP2qDnNwIDAQAB
 	/**
 	 * Default currency
 	 */
-
 	const DEFAULT_CURRENCY = 'HUF';
 
 	/**
+	 * Test mode
+	 *
 	 * @var bool
+	 * @access protected
 	 */
 	protected $testMode = true;
 
 	/**
+	 * Store name
+	 *
 	 * @var string
+	 * @access protected
 	 */
 	protected $storeName = self::SDK_TEST_STORE_NAME;
 
 	/**
+	 * API key
+	 *
 	 * @var string
+	 * @access protected
 	 */
 	protected $apiKey = self::SDK_TEST_API_KEY;
 
 	/**
+	 * Charset response
+	 *
 	 * @var string
+	 * @access public
 	 */
 	public $outCharset = self::CHARSET_UTF8;
 
 	/**
-	 * @var
+	 * Public key to encrypt
+	 *
+	 * @var string
+	 * @access protected
 	 */
 	protected $encryptPublicKey = self::SDK_TEST_ENCRYPT_PUBLIC_KEY;
 
@@ -106,6 +122,14 @@ XIm63iVw6gjP2qDnNwIDAQAB
 	 * @access protected
 	 */
 	protected $moduleVersion = PaymentGateway::VERSION;
+
+	/**
+	 * Proxy address used for the api requests
+	 *
+	 * @var string
+	 * @access protected
+	 */
+	protected $gatewayProxy = '';
 
 	/**
 	 * @return bool
@@ -145,6 +169,14 @@ XIm63iVw6gjP2qDnNwIDAQAB
 	public function getEncryptPublicKey(): string
 	{
 		return (string) $this->encryptPublicKey;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getGatewayProxy(): string
+	{
+		return (string) $this->gatewayProxy;
 	}
 
 	/**

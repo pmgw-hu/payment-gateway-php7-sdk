@@ -117,6 +117,10 @@ class SystemTransport
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
 		curl_setopt($curl, CURLOPT_USERAGENT, $this->getUserAgent($request->getMethod()));
 
+		if ($this->config->getGatewayProxy() != '') {
+			curl_setopt($curl, CURLOPT_PROXY, $this->config->getGatewayProxy());
+		}
+
 		$httpResponse = curl_exec($curl);
 
 		if ($httpResponse === false) {
