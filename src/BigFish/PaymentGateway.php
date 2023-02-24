@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '3.15.0';
+	const VERSION = '3.16.0';
 
 	/**
 	 * SDK Name
@@ -90,7 +90,8 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_GP,
 		PaymentGateway::PROVIDER_VIRPAY,
 		PaymentGateway::PROVIDER_WIRECARD,
-		PaymentGateway::PROVIDER_VIVAWALLET
+		PaymentGateway::PROVIDER_VIVAWALLET,
+		PaymentGateway::PROVIDER_KHB
 	];
 
 	/**
