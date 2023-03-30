@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '3.15.0';
+	const VERSION = '3.16.0';
 
 	/**
 	 * SDK Name
@@ -67,6 +67,7 @@ class PaymentGateway
 	const PROVIDER_SAFERPAY = 'Saferpay';
 	const PROVIDER_SMS = 'SMS';
 	const PROVIDER_SOFORT = 'Sofort';
+	const PROVIDER_STRIPE = 'Stripe';
 	const PROVIDER_UNICREDIT = 'UniCredit';
 	const PROVIDER_VIRPAY = 'Virpay';
 	const PROVIDER_WIRECARD_QPAY = 'QPAY';
