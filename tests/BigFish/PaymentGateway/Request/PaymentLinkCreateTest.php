@@ -204,8 +204,7 @@ class PaymentLinkCreateTest extends \PHPUnit\Framework\TestCase
 		$init->setExtra();
 
 		$data = $init->getData();
-		$this->assertArrayHasKey('extra', $data);
-		$this->assertNotEmpty($data['extra']);
+		$this->assertArrayNotHasKey('extra', $data);
 	}
 
 	/**
