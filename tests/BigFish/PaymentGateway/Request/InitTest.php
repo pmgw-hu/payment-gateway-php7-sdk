@@ -107,8 +107,7 @@ class InitTest extends InitRPTest
 		$init->setExtra();
 
 		$data = $init->getData();
-		$this->assertArrayHasKey('extra', $data);
-		$this->assertNotEmpty($data['extra']);
+		$this->assertArrayNotHasKey('extra', $data);
 		$this->assertArrayNotHasKey('otpCardPocketId', $data);
 	}
 
@@ -127,8 +126,7 @@ class InitTest extends InitRPTest
 		$init->setExtra();
 
 		$data = $init->getData();
-		$this->assertArrayHasKey('extra', $data);
-		$this->assertNotEmpty($data['extra']);
+		$this->assertArrayNotHasKey('extra', $data);
 	}
 
 	/**
@@ -145,8 +143,7 @@ class InitTest extends InitRPTest
 		$init->setExtra();
 
 		$data = $init->getData();
-		$this->assertArrayHasKey('extra', $data);
-		$this->assertNotEmpty($data['extra']);
+		$this->assertArrayNotHasKey('extra', $data);
 	}
 
 	/**

@@ -86,7 +86,13 @@ class Payout extends RequestAbstract
 	 */
 	public function setInfo(Info $info): self
 	{
-		return $this->setData($this->urlSafeEncode(json_encode($info->getData())), 'info');
+		$data = $info->getData();
+
+		if (!empty($data)) {
+			return $this->setData($this->urlSafeEncode(json_encode($data)), 'info');
+		}
+
+		return $this;
 	}
 
 	/**

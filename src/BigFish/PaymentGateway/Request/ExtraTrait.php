@@ -24,53 +24,17 @@ trait ExtraTrait
 	/**
 	 * @param array $extra
 	 * @return $this
-	 * @throws PaymentGatewayException
 	 */
 	public function setExtra(array $extra = []): self
 	{
 		$providerName = (string)($this->data['providerName'] ?? '');
-		$encryptData = [];
 
 		if (in_array($providerName, PaymentGateway::$oneClickProviders) && isset($this->data['oneClickForcedRegistration'])) {
 			$extra['oneClickForcedRegistration'] = true;
 		}
 
-		if (
-			in_array($providerName, array(PaymentGateway::PROVIDER_OTP, PaymentGateway::PROVIDER_OTP_TWO_PARTY)) &&
-			!empty($this->data['otpConsumerRegistrationId'])
-		) {
-			$encryptData['otpConsumerRegistrationId'] = $this->data['otpConsumerRegistrationId'];
-		} elseif ($providerName == PaymentGateway::PROVIDER_OTP_TWO_PARTY) {
-			if (
-				!empty($this->data['otpCardNumber']) &&
-				!empty($this->data['otpExpiration']) &&
-				!empty($this->data['otpCvc'])
-			) {
-				$encryptData = [
-					'otpCardNumber' => $this->data['otpCardNumber'],
-					'otpExpiration' => $this->data['otpExpiration'],
-					'otpCvc' => $this->data['otpCvc']
-				];
-			}
-		} elseif ($providerName == PaymentGateway::PROVIDER_MKB_SZEP) {
-			if (
-				!$this->getPaymentPageProperty() &&
-				!empty($this->data['mkbSzepCardNumber']) &&
-				!empty($this->data['mkbSzepCvv'])
-			) {
-				$encryptData = [
-					'mkbSzepCardNumber' => $this->data['mkbSzepCardNumber'],
-					'mkbSzepCvv' => $this->data['mkbSzepCvv']
-				];
-			}
-		} elseif (!empty($extra)) {
+		if (!empty($extra)) {
 			$this->data['extra'] = $this->urlSafeEncode(json_encode($extra));
-		}
-
-		if (!empty($encryptData)) {
-			if (!$this->encryptExtra($encryptData)) {
-				throw new PaymentGatewayException('Error occurred when encrypting data.');
-			}
 		}
 
 		$this->removeSensitiveInformation($providerName);
@@ -91,6 +55,8 @@ trait ExtraTrait
 	 * @param array $data
 	 * @return bool
 	 * @throws PaymentGatewayException
+	 *
+	 * @deprecated deprecated since version 3.18.1
 	 */
 	protected function encryptExtra(array $data = []): bool
 	{
