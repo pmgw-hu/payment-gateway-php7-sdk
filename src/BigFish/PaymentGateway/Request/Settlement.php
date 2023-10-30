@@ -39,10 +39,10 @@ class Settlement extends SettlementBaseAbstract
 	/**
 	 * Set settlement batch id
 	 *
-	 * @param string $settlementBatchId
+	 * @param int $settlementBatchId
 	 * @return $this
 	 */
-	public function setSettlementBatchId(string $settlementBatchId): self
+	public function setSettlementBatchId(int $settlementBatchId): self
 	{
 		return $this->setData($settlementBatchId, 'settlementBatchId');
 	}
