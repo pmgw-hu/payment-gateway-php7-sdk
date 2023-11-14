@@ -23,6 +23,7 @@ class SettlementTest extends SettlementRequestAbstract
 			array('2020-01-01', 'setSettlementDate'),
 			array('MID-8822', 'setTerminalId'),
 			array('EUR', 'setTransactionCurrency'),
+			array(340, 'setSettlementBatchId'),
 		);
 	}
 
