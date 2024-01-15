@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '3.19.0';
+	const VERSION = '3.20.0';
 
 	/**
 	 * SDK Name
@@ -64,6 +64,7 @@ class PaymentGateway
 	const PROVIDER_PAYU2 = 'PayU2';
 	const PROVIDER_PAYUREST = 'PayURest';
 	const PROVIDER_RAIFFEISENPAY = 'RaiffeisenPay';
+	const PROVIDER_RAWOTPSZEP = 'RawOTPSZEP';
 	const PROVIDER_SAFERPAY = 'Saferpay';
 	const PROVIDER_SMS = 'SMS';
 	const PROVIDER_SOFORT = 'Sofort';
@@ -93,7 +94,8 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_WIRECARD,
 		PaymentGateway::PROVIDER_VIVAWALLET,
 		PaymentGateway::PROVIDER_KHB,
-		PaymentGateway::PROVIDER_CIB
+		PaymentGateway::PROVIDER_CIB,
+		PaymentGateway::PROVIDER_RAWOTPSZEP,
 	];
 
 	/**
