@@ -35,4 +35,15 @@ class Settlement extends SettlementBaseAbstract
 	{
 		return $this->setData($currency, 'transactionCurrency');
 	}
+
+	/**
+	 * Set settlement batch id
+	 *
+	 * @param int $settlementBatchId
+	 * @return $this
+	 */
+	public function setSettlementBatchId(int $settlementBatchId): self
+	{
+		return $this->setData($settlementBatchId, 'settlementBatchId');
+	}
 }
