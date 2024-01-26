@@ -64,6 +64,7 @@ class PaymentGateway
 	const PROVIDER_PAYU2 = 'PayU2';
 	const PROVIDER_PAYUREST = 'PayURest';
 	const PROVIDER_RAIFFEISENPAY = 'RaiffeisenPay';
+	const PROVIDER_RAWMBHSZEP = 'RawMBHSZEP';
 	const PROVIDER_RAWOTPSZEP = 'RawOTPSZEP';
 	const PROVIDER_SAFERPAY = 'Saferpay';
 	const PROVIDER_SMS = 'SMS';
@@ -95,6 +96,7 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_VIVAWALLET,
 		PaymentGateway::PROVIDER_KHB,
 		PaymentGateway::PROVIDER_CIB,
+		PaymentGateway::PROVIDER_RAWMBHSZEP,
 		PaymentGateway::PROVIDER_RAWOTPSZEP,
 	];
 
