@@ -170,6 +170,22 @@ class PaymentLinkCreate extends InitAbstract
 	}
 
 	/**
+	 * Set general terms and conditions url
+	 *
+	 * @param string $generalTermsAndConditionsUrl
+	 * @return $this
+	 * @throws PaymentGatewayException
+	 */
+	public function setGeneralTermsAndConditionsUrl(string $generalTermsAndConditionsUrl): self
+	{
+		if (filter_var($generalTermsAndConditionsUrl, FILTER_VALIDATE_URL) === false) {
+			throw new PaymentGatewayException('Invalid general terms and conditions url');
+		}
+
+		return $this->setData($generalTermsAndConditionsUrl, 'generalTermsAndConditionsUrl');
+	}
+
+	/**
 	 * Set redirect url
 	 *
 	 * @param string $redirectUrl
