@@ -4,7 +4,7 @@
 
 3.20.0
 
-## Requirements:
+## Requirements
 
  * PHP 7.2
  * PHP cURL extension
