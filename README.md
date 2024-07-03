@@ -1,8 +1,12 @@
+> Repository github.com/bigfish-hu/payment-gateway-php7-sdk (bigfish/paymentgateway-php7-sdk) is abandoned, you should avoid using it.<br>
+><br>
+> Use https://github.com/pmgw-hu/payment-gateway-php7-sdk ([pmgw/payment-gateway-php7-sdk](https://packagist.org/packages/pmgw/payment-gateway-php7-sdk)) instead.
+
 # BIG FISH Payment Gateway - PHP7 SDK
 
 ## Version
 
-3.20.0
+3.21.0
 
 ## Requirements
 
