@@ -6,7 +6,7 @@
 
 ## Version
 
-3.21.0
+4.0.0
 
 ## Requirements
 
@@ -22,7 +22,7 @@ BIG FISH Payment Gateway is available at packagist.org, so you can use composer 
 ```yml
 {
     "require": {
-        "bigfish/paymentgateway-php7-sdk": "dev-testing"
+        "pmgw/payment-gateway-php7-sdk": "dev-testing"
     }
 }
 ```
@@ -30,7 +30,7 @@ BIG FISH Payment Gateway is available at packagist.org, so you can use composer 
 or run
 
 ```sh
-composer require bigfish/paymentgateway-php7-sdk:dev-testing
+composer require pmgw/payment-gateway-php7-sdk:dev-testing
 ```
 
 ## Technical documentation
@@ -39,7 +39,7 @@ https://docs.paymentgateway.hu/
 
 ## Source code
 
-https://github.com/bigfish-hu/payment-gateway-php7-sdk/tree/testing
+https://github.com/pmgw-hu/payment-gateway-php7-sdk/tree/testing
 
 ## Example usage
 
