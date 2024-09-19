@@ -87,6 +87,24 @@ class Response implements ResponseInterface
 	}
 
 	/**
+	 * @param string $name
+	 * @return bool
+	 */
+	public function __isset(string $name): bool
+	{
+		return isset($this->data[$name]);
+	}
+
+	/**
+	 * @param string $name
+	 * @return void
+	 */
+	public function __unset(string $name)
+	{
+		unset($this->data[$name]);
+	}
+
+	/**
 	 * @param string $charset
 	 */
 	public function convert(string $charset)
