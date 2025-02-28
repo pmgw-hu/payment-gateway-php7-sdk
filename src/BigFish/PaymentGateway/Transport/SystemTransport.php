@@ -117,9 +117,9 @@ class SystemTransport
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
 		curl_setopt($curl, CURLOPT_USERAGENT, $this->getUserAgent($request->getMethod()));
 
-        if ($this->config->debugCommunication) {
-            curl_setopt($curl, CURLINFO_HEADER_OUT, true);
-        }
+		if ($this->config->debugCommunication) {
+			curl_setopt($curl, CURLINFO_HEADER_OUT, true);
+		}
 
 		if ($this->config->getGatewayProxy() != '') {
 			curl_setopt($curl, CURLOPT_PROXY, $this->config->getGatewayProxy());
@@ -133,7 +133,7 @@ class SystemTransport
 			throw $exception;
 		}
 
-        $sdkDebugInfo = [];
+		$sdkDebugInfo = [];
 
 		if ($this->config->debugCommunication) {
 			$sdkDebugInfo = array(
