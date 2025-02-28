@@ -77,6 +77,11 @@ class Response implements ResponseInterface
 		$this->data = $data;
 	}
 
+    public function setSdkDebugInfo(array $sdkDebugInfo)
+    {
+        $this->data['sdkDebugInfo'] = $sdkDebugInfo;
+    }
+
 	/**
 	 * @param string $name
 	 * @return string|null
