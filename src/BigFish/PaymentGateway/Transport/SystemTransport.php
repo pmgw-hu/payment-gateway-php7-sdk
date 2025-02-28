@@ -135,19 +135,19 @@ class SystemTransport
 
         $sdkDebugInfo = [];
 
-        if ($this->config->debugCommunication) {
-            $sdkDebugInfo = array(
-                'curl_getinfo' => curl_getinfo($curl),
-                'post_data' => $postData
-            );
-        }
+		if ($this->config->debugCommunication) {
+			$sdkDebugInfo = array(
+				'curl_getinfo' => curl_getinfo($curl),
+				'post_data' => $postData
+			);
+		}
 
 		curl_close($curl);
 
 		$response = Response::createFromJson($httpResponse);
-        if (count($sdkDebugInfo) > 0) {
-            $response->setSdkDebugInfo($sdkDebugInfo);
-        }
+		if (count($sdkDebugInfo) > 0) {
+			$response->setSdkDebugInfo($sdkDebugInfo);
+		}
 		$this->convertOutResponse($response);
 		return $response;
 	}
