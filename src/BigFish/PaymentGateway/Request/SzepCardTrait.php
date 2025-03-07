@@ -40,4 +40,13 @@ trait SzepCardTrait
 	{
 		return $this->setData($otpCardPocketId, 'otpCardPocketId');
 	}
+
+	/**
+	 * @param string $szepPocket
+	 * @return $this
+	 */
+	public function setSzepPocket(string $szepPocket): self
+	{
+		return $this->setData($szepPocket, 'szepPocket');
+	}
 }
