@@ -6,7 +6,7 @@
 
 ## Version
 
-4.1.0
+4.1.1
 
 ## Requirements
 
@@ -127,6 +127,25 @@ $payout->setPayoutType(\BigFish\PaymentGateway::PAYOUT_TYPE_FUNDS_DISBURSEMENT)
     ->setAdditionalMessage("BF-TEST-PAYOUT-MESSAGE");
 
 $response = $paymentGateway->send($payout);
+```
+
+#### Get payment registrations request
+
+```php
+$response = $paymentGateway->send(
+    (new \BigFish\PaymentGateway\Request\GetPaymentRegistrations())
+        ->setProviderName(\BigFish\PaymentGateway::PROVIDER_BARION2)
+        ->setUserId('User1')
+    );
+```
+
+#### Get payment registration request
+
+```php
+$response = $paymentGateway->send(
+    (new \BigFish\PaymentGateway\Request\GetPaymentRegistration())
+        ->setTransactionId($transactionId)
+);
 ```
 
 #### Cancel payment registration request
