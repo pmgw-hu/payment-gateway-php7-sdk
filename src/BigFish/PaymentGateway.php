@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '4.2.0';
+	const VERSION = '4.4.0';
 
 	/**
 	 * SDK Name
@@ -76,8 +76,8 @@ class PaymentGateway
 	const PROVIDER_VIRPAY = 'Virpay';
 	const PROVIDER_WIRECARD_QPAY = 'QPAY';
 	const PROVIDER_WIRECARD = 'Wirecard';
-	const PROVIDER_VIVAWALLET = 'VivaWallet';
 	const PROVIDER_RAIFFEISENUPC = 'RaiffeisenUPC';
+	const PROVIDER_VIVAWALLET = 'VivaWallet';
 
 	/**
 	 * Valid OneClickPayment providers
@@ -99,9 +99,9 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_VIVAWALLET,
 		PaymentGateway::PROVIDER_KHB,
 		PaymentGateway::PROVIDER_CIB,
+		PaymentGateway::PROVIDER_RAIFFEISENUPC,
 		PaymentGateway::PROVIDER_RAWMBHSZEP,
 		PaymentGateway::PROVIDER_RAWOTPSZEP,
-		PaymentGateway::PROVIDER_RAIFFEISENUPC,
 	];
 
 	/**
