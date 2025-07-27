@@ -77,6 +77,7 @@ class PaymentGateway
 	const PROVIDER_WIRECARD_QPAY = 'QPAY';
 	const PROVIDER_WIRECARD = 'Wirecard';
 	const PROVIDER_VIVAWALLET = 'VivaWallet';
+	const PROVIDER_RAIFFEISENUPC = 'RaiffeisenUPC';
 
 	/**
 	 * Valid OneClickPayment providers
@@ -100,6 +101,7 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_CIB,
 		PaymentGateway::PROVIDER_RAWMBHSZEP,
 		PaymentGateway::PROVIDER_RAWOTPSZEP,
+		PaymentGateway::PROVIDER_RAIFFEISENUPC,
 	];
 
 	/**
