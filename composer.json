@@ -1,6 +1,7 @@
 {
 	"name": "pmgw/payment-gateway-php7-sdk",
 	"description": "BIG FISH Payment Gateway - PHP7 SDK",
+	"version": "4.4.0",
 	"type": "library",
 	"keywords": ["payment", "ecommerce", "webshop", "php", "sdk"],
 	"homepage": "https://www.paymentgateway.hu/",
