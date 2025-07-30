@@ -21,10 +21,10 @@ Copy paste detection:
   allow_failure: true
 
 PhpUnit php7.2:
-  image: php:7.2
+  image: php:7.2-cli-alpine
   script:
-    - apt-get update && apt-get install -y git
-    - docker-php-ext-configure zip --with-libzip && docker-php-ext-install zip
+    - apk update && apk add git curl unzip
+    - docker-php-ext-configure zip --with-libzip-dev && docker-php-ext-install zip
     - php -v
     - curl -sS https://getcomposer.org/installer | php
     - php composer.phar install
@@ -32,10 +32,10 @@ PhpUnit php7.2:
   stage: build
 
 PhpUnit php7.3:
-  image: php:7.3
+  image: php:7.3-cli-alpine
   script:
-    - apt-get update && apt-get install -y git
-    - docker-php-ext-configure zip --with-libzip && docker-php-ext-install zip
+    - apk update && apk add git curl unzip
+    - docker-php-ext-configure zip --with-libzip-dev && docker-php-ext-install zip
     - php -v
     - curl -sS https://getcomposer.org/installer | php
     - php composer.phar install
