@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '4.2.1';
+	const VERSION = '4.3.1';
 
 	/**
 	 * SDK Name
@@ -100,6 +100,8 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_CIB,
 		PaymentGateway::PROVIDER_RAWMBHSZEP,
 		PaymentGateway::PROVIDER_RAWOTPSZEP,
+		PaymentGateway::PROVIDER_RAIFFEISENPAY,
+		PaymentGateway::PROVIDER_OTP_SIMPLE_RTP,
 	];
 
 	/**
