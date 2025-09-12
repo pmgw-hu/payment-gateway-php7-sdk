@@ -165,4 +165,13 @@ class Init extends InitAbstract
 	{
 		return $this->setData($gatewayPaymentPage, 'gatewayPaymentPage');
 	}
+
+	/**
+	 * @param array $paymentMethods
+	 * @return $this
+	 */
+	public function setPaymentMethods(array $paymentMethods): self
+	{
+		return $this->setData($paymentMethods, 'paymentMethods');
+	}
 }
