@@ -150,7 +150,7 @@ class InitTest extends InitRPTest
 	public function setExtra_noOneClickProvider()
 	{
 		$init = $this->getRequest();
-		$init->setProviderName(PaymentGateway::PROVIDER_FHB);
+		$init->setProviderName(PaymentGateway::PROVIDER_OTP_EP);
 		$config = new PaymentGateway\Config();
 		$init->setEncryptKey($config->getEncryptPublicKey());
 		$init->setOneClickPayment();
@@ -176,7 +176,7 @@ class InitTest extends InitRPTest
 	public function setExtra_noOneClickProvider_paymentRegistrationIsNull()
 	{
 		$init = $this->getRequest();
-		$init->setProviderName(PaymentGateway::PROVIDER_FHB);
+		$init->setProviderName(PaymentGateway::PROVIDER_OTP_EP);
 		$config = new PaymentGateway\Config();
 		$init->setEncryptKey($config->getEncryptPublicKey());
 		$init->setPaymentRegistration(null);

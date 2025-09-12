@@ -41,9 +41,7 @@ class PaymentGateway
 	const PROVIDER_BORGUN = 'Borgun';
 	const PROVIDER_BORGUN2 = 'Borgun2';
 	const PROVIDER_CIB = 'CIB';
-	const PROVIDER_FHB = 'FHB';
 	const PROVIDER_GP = 'GP';
-	const PROVIDER_IPG = 'IPG';
 	const PROVIDER_KHB = 'KHB';
 	const PROVIDER_KHB_SZEP = 'KHBSZEP';
 	const PROVIDER_MKB_SZEP = 'MKBSZEP';
@@ -64,7 +62,6 @@ class PaymentGateway
 	const PROVIDER_RAWMBHSZEP = 'RawMBHSZEP';
 	const PROVIDER_RAWOTPSZEP = 'RawOTPSZEP';
 	const PROVIDER_SAFERPAY = 'Saferpay';
-	const PROVIDER_SOFORT = 'Sofort';
 	const PROVIDER_STRIPE = 'Stripe';
 	const PROVIDER_WIRECARD_QPAY = 'QPAY';
 	const PROVIDER_VIVAWALLET = 'VivaWallet';
