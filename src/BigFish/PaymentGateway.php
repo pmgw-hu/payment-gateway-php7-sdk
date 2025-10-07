@@ -86,6 +86,8 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_RAWMBHSZEP,
 		PaymentGateway::PROVIDER_RAWOTPSZEP,
 		PaymentGateway::PROVIDER_RAWKHBSZEP,
+		PaymentGateway::PROVIDER_RAIFFEISENPAY,
+		PaymentGateway::PROVIDER_OTP_SIMPLE_RTP,
 	];
 
 	/**
