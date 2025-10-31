@@ -132,6 +132,13 @@ XIm63iVw6gjP2qDnNwIDAQAB
 	protected $gatewayProxy = '';
 
 	/**
+	 * Add debug information to the Response object
+	 *
+	 * @var bool
+	 */
+	public $debugCommunication = false;
+
+	/**
 	 * @return bool
 	 */
 	public function isTestMode(): bool
