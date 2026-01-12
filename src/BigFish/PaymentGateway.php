@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '4.4.3';
+	const VERSION = '4.4.4';
 
 	/**
 	 * SDK Name
