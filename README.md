@@ -5,7 +5,7 @@
 
 ## Version
 
-5.0.0
+5.0.1
 
 ## Requirements
 
@@ -188,6 +188,22 @@ if (!$response->ResultCode == "SUCCESSFUL" || !$response->TransactionId) {
 
 $result = $paymentGateway->send(
         (new \Nevogate\PaymentGateway\Request\StartRP())->setTransactionId($response->TransactionId)
+    );
+```
+
+#### StartWallet request
+
+```php
+$response = $paymentGateway->send(
+        (new \Nevogate\PaymentGateway\Request\StartWallet())->setTransactionId($transactionId)
+    );
+```
+
+#### CompleteWallet request
+
+```php
+$response = $paymentGateway->send(
+        (new \Nevogate\PaymentGateway\Request\CompleteWallet())->setTransactionId($transactionId)
     );
 ```
 
