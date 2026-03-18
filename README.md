@@ -21,7 +21,7 @@ Nevogate Payment Gateway is available at packagist.org, so you can use composer 
 ```yml
 {
     "require": {
-        "nevogate/payment-gateway-sdk": "^5.1@dev"
+        "nevogate/payment-gateway-sdk": "^5.0@dev"
     }
 }
 ```
@@ -29,7 +29,7 @@ Nevogate Payment Gateway is available at packagist.org, so you can use composer 
 or run
 
 ```sh
-composer require nevogate/payment-gateway-sdk:^5.1@dev
+composer require nevogate/payment-gateway-sdk:^5.0@dev
 ```
 
 ## Technical documentation
