@@ -203,11 +203,6 @@ XIm63iVw6gjP2qDnNwIDAQAB
         return $this->debugCommunication;
     }
 
-    public function setDebugCommunication(bool $debugCommunication): void
-    {
-        $this->debugCommunication = $debugCommunication;
-    }
-
 	/**
 	 * @param string $name
 	 * @param mixed $value
