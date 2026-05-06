@@ -117,7 +117,7 @@ class SystemTransport
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
 		curl_setopt($curl, CURLOPT_USERAGENT, $this->getUserAgent($request->getMethod()));
 
-		if ($this->config->debugCommunication) {
+		if ($this->config->isDebugCommunication()) {
 			curl_setopt($curl, CURLINFO_HEADER_OUT, true);
 		}
 
@@ -135,7 +135,7 @@ class SystemTransport
 
 		$sdkDebugInfo = [];
 
-		if ($this->config->debugCommunication) {
+		if ($this->config->isDebugCommunication()) {
 			$sdkDebugInfo = array(
 				'curl_getinfo' => curl_getinfo($curl),
 				'post_data' => $postData
@@ -145,9 +145,11 @@ class SystemTransport
 		curl_close($curl);
 
 		$response = Response::createFromJson($httpResponse);
+
 		if (count($sdkDebugInfo) > 0) {
 			$response->setSdkDebugInfo($sdkDebugInfo);
 		}
+
 		$this->convertOutResponse($response);
 		return $response;
 	}

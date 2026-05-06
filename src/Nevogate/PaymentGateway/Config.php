@@ -136,7 +136,7 @@ XIm63iVw6gjP2qDnNwIDAQAB
 	 *
 	 * @var bool
 	 */
-	public $debugCommunication = false;
+	protected $debugCommunication = false;
 
 	/**
 	 * @return bool
@@ -197,6 +197,16 @@ XIm63iVw6gjP2qDnNwIDAQAB
 
 		return static::API_URL_PRODUCTION;
 	}
+
+    public function isDebugCommunication(): bool
+    {
+        return $this->debugCommunication;
+    }
+
+    public function setDebugCommunication(bool $debugCommunication): void
+    {
+        $this->debugCommunication = $debugCommunication;
+    }
 
 	/**
 	 * @param string $name
