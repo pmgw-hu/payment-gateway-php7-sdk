@@ -24,4 +24,13 @@ class Details extends SimpleRequestAbstract
 	{
 		return $this->setData($getRelatedTransactions, 'getRelatedTransactions');
 	}
+
+	/**
+	 * @param bool $getPaymentAttributes Get payment attributes (true/false)
+	 * @return $this
+	 */
+	public function setGetPaymentAttributes(bool $getPaymentAttributes): self
+	{
+		return $this->setData($getPaymentAttributes, 'getPaymentAttributes');
+	}
 }

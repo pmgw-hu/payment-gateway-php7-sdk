@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '5.0.1';
+	const VERSION = '5.1.0';
 
 	/**
 	 * SDK Name
@@ -42,6 +42,7 @@ class PaymentGateway
 	const PROVIDER_BORGUN2 = 'Borgun2';
 	const PROVIDER_CIB = 'CIB';
 	const PROVIDER_GP = 'GP';
+	const PROVIDER_GRANIT = 'Granit';
 	const PROVIDER_KHB = 'KHB';
 	const PROVIDER_KHB_SZEP = 'KHBSZEP';
 	const PROVIDER_MKB_SZEP = 'MKBSZEP';
@@ -66,7 +67,6 @@ class PaymentGateway
 	const PROVIDER_WIRECARD_QPAY = 'QPAY';
 	const PROVIDER_RAIFFEISENUPC = 'RaiffeisenUPC';
 	const PROVIDER_VIVAWALLET = 'VivaWallet';
-	const PROVIDER_GRANIT = 'Granit';
 
 	/**
 	 * Valid OneClickPayment providers
@@ -91,6 +91,7 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_RAWKHBSZEP,
 		PaymentGateway::PROVIDER_RAIFFEISENPAY,
 		PaymentGateway::PROVIDER_OTP_SIMPLE_RTP,
+		PaymentGateway::PROVIDER_GRANIT,
 	];
 
 	/**
