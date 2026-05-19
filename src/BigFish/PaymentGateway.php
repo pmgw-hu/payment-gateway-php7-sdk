@@ -26,7 +26,7 @@ class PaymentGateway
 	/**
 	 * Version
 	 */
-	const VERSION = '4.4.4';
+	const VERSION = '4.5.0';
 
 	/**
 	 * SDK Name
@@ -41,6 +41,7 @@ class PaymentGateway
 	const PROVIDER_BORGUN = 'Borgun';
 	const PROVIDER_BORGUN2 = 'Borgun2';
 	const PROVIDER_CIB = 'CIB';
+	const PROVIDER_GOPAY = 'GoPay';
 	const PROVIDER_GP = 'GP';
 	const PROVIDER_KHB = 'KHB';
 	const PROVIDER_KHB_SZEP = 'KHBSZEP';
@@ -81,6 +82,7 @@ class PaymentGateway
 		PaymentGateway::PROVIDER_BARION2,
 		PaymentGateway::PROVIDER_BORGUN2,
 		PaymentGateway::PROVIDER_PAYUREST,
+		PaymentGateway::PROVIDER_GOPAY,
 		PaymentGateway::PROVIDER_GP,
 		PaymentGateway::PROVIDER_VIVAWALLET,
 		PaymentGateway::PROVIDER_KHB,
