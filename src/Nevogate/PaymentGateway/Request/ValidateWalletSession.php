@@ -4,6 +4,8 @@ namespace Nevogate\PaymentGateway\Request;
 
 class ValidateWalletSession extends RequestAbstract
 {
+	use WalletTrait;
+
 	const REQUEST_TYPE = 'ValidateWalletSession';
 
 	/**
@@ -42,12 +44,4 @@ class ValidateWalletSession extends RequestAbstract
 		return $this->setData($autoCommit ? 'true' : 'false', 'autoCommit');
 	}
 
-	/**
-	 * @param array $wallet
-	 * @return $this
-	 */
-	public function setWallet(array $wallet): self
-	{
-		return $this->setData($wallet, 'wallet');
-	}
 }

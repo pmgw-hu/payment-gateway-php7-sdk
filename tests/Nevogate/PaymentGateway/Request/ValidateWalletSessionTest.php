@@ -3,6 +3,7 @@
 namespace Nevogate\Tests\PaymentGateway\Request;
 
 use Nevogate\PaymentGateway\Config;
+use Nevogate\PaymentGateway\Data\Wallet;
 use Nevogate\PaymentGateway\Request\ValidateWalletSession;
 use Nevogate\PaymentGateway\Transport\SystemTransport;
 
@@ -18,12 +19,7 @@ class ValidateWalletSessionTest extends \PHPUnit\Framework\TestCase
 			array('HUF', 'setCurrency'),
 			array('demo_store', 'setStoreName'),
 			array(
-				array(
-					'Type' => 'apple_pay',
-					'Environment' => 'web',
-					'ValidationUrl' => 'https://apple-pay-gateway.apple.com/paymentservices/startSession',
-					'ShopUrl' => 'https://demo.dev.bfpg.hu',
-				),
+				$this->getWallet(),
 				'setWallet'
 			),
 		);
@@ -35,6 +31,18 @@ class ValidateWalletSessionTest extends \PHPUnit\Framework\TestCase
 	protected function getRequest()
 	{
 		return new ValidateWalletSession();
+	}
+
+	/**
+	 * @return Wallet
+	 */
+	protected function getWallet()
+	{
+		return (new Wallet())
+			->setType(Wallet::TYPE_APPLE_PAY)
+			->setEnvironment(Wallet::ENVIRONMENT_WEB)
+			->setValidationUrl('https://apple-pay-gateway.apple.com/paymentservices/startSession')
+			->setShopUrl('https://demo.nevogate.com');
 	}
 
 	/**
@@ -53,6 +61,11 @@ class ValidateWalletSessionTest extends \PHPUnit\Framework\TestCase
 		// test chain
 		$this->assertInstanceOf(get_class($request), $result);
 		$this->assertArrayHasKey($variableName, $request->getData());
+		if ($testData instanceof Wallet) {
+			$this->assertEquals($testData->getUcFirstData(), $request->getData()[$variableName]);
+			return;
+		}
+
 		$this->assertEquals($testData, $request->getData()[$variableName]);
 	}
 

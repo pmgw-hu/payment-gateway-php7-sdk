@@ -21,7 +21,7 @@ Nevogate Payment Gateway is available at packagist.org, so you can use composer 
 ```yml
 {
     "require": {
-        "nevogate/payment-gateway-sdk": "^5.1@stable"
+        "nevogate/payment-gateway-sdk": "^5.3@dev"
     }
 }
 ```
@@ -221,12 +221,13 @@ $response = $paymentGateway->send(
         (new \Nevogate\PaymentGateway\Request\ValidateWalletSession())
             ->setProviderName('Barion2')
             ->setCurrency('HUF')
-            ->setWallet([
-                'Type' => 'apple_pay',
-                'Environment' => 'web',
-                'ValidationUrl' => $validationUrl, // received from Apple in the onvalidatemerchant event
-                'ShopUrl' => 'https://demo.dev.bfpg.hu',
-            ])
+            ->setWallet(
+                (new \Nevogate\PaymentGateway\Data\Wallet())
+                    ->setType(\Nevogate\PaymentGateway\Data\Wallet::TYPE_APPLE_PAY)
+                    ->setEnvironment(\Nevogate\PaymentGateway\Data\Wallet::ENVIRONMENT_WEB)
+                    ->setValidationUrl($validationUrl) // received from Apple in the onvalidatemerchant event
+                    ->setShopUrl('https://demo.nevogate.com')
+            )
     );
 ```
 
