@@ -18,10 +18,6 @@ class ValidateWalletSessionTest extends \PHPUnit\Framework\TestCase
 			array('Barion2', 'setProviderName'),
 			array('HUF', 'setCurrency'),
 			array('demo_store', 'setStoreName'),
-			array(
-				$this->getWallet(),
-				'setWallet'
-			),
 		);
 	}
 
@@ -61,12 +57,21 @@ class ValidateWalletSessionTest extends \PHPUnit\Framework\TestCase
 		// test chain
 		$this->assertInstanceOf(get_class($request), $result);
 		$this->assertArrayHasKey($variableName, $request->getData());
-		if ($testData instanceof Wallet) {
-			$this->assertEquals($testData->getUcFirstData(), $request->getData()[$variableName]);
-			return;
-		}
-
 		$this->assertEquals($testData, $request->getData()[$variableName]);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setWallet()
+	{
+		$wallet = $this->getWallet();
+		$request = $this->getRequest();
+		$result = $request->setWallet($wallet);
+
+		$this->assertInstanceOf(get_class($request), $result);
+		$this->assertArrayHasKey('wallet', $request->getData());
+		$this->assertEquals($wallet->getUcFirstData(), $request->getData()['wallet']);
 	}
 
 	/**
