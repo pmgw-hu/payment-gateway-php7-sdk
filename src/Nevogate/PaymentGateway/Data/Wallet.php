@@ -36,7 +36,7 @@ class Wallet extends BaseAbstract
 	 */
 	public function setEnvironment(string $environment): self
 	{
-		if (!in_array($environment, [self::ENVIRONMENT_WEB], true)) {
+		if ($environment !== self::ENVIRONMENT_WEB) {
 			throw new PaymentGatewayException('Invalid wallet environment');
 		}
 

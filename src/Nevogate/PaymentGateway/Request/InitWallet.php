@@ -2,7 +2,7 @@
 
 namespace Nevogate\PaymentGateway\Request;
 
-class InitWallet extends Init
+class InitWallet extends InitCommonAbstract
 {
 	use WalletTrait;
 
