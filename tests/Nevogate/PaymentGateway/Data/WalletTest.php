@@ -57,4 +57,22 @@ class WalletTest extends \PHPUnit\Framework\TestCase
 	{
 		(new Wallet())->setEnvironment('invalid');
 	}
+
+	/**
+	 * @test
+	 */
+	public function setValidationUrl_invalidUrl()
+	{
+		$this->expectException(\Nevogate\PaymentGateway\Exception\PaymentGatewayException::class);
+		(new Wallet())->setValidationUrl('invalidUrl');
+	}
+
+	/**
+	 * @test
+	 */
+	public function setShopUrl_invalidUrl()
+	{
+		$this->expectException(\Nevogate\PaymentGateway\Exception\PaymentGatewayException::class);
+		(new Wallet())->setShopUrl('invalidUrl');
+	}
 }

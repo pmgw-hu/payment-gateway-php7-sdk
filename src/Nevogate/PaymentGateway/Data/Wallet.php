@@ -45,11 +45,19 @@ class Wallet extends BaseAbstract
 
 	public function setValidationUrl(string $validationUrl): self
 	{
+		if (filter_var($validationUrl, FILTER_VALIDATE_URL) === false) {
+			throw new PaymentGatewayException('Invalid validation url');
+		}
+
 		return $this->setData($validationUrl, self::VALIDATION_URL);
 	}
 
 	public function setShopUrl(string $shopUrl): self
 	{
+		if (filter_var($shopUrl, FILTER_VALIDATE_URL) === false) {
+			throw new PaymentGatewayException('Invalid shop url');
+		}
+
 		return $this->setData($shopUrl, self::SHOP_URL);
 	}
 

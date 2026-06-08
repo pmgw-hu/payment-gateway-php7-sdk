@@ -67,7 +67,7 @@ class SystemTransport
 			$request->setStoreName($this->config->getStoreName());
 		}
 
-		if ($request instanceof PaymentGateway\Request\Init) {
+		if ($request instanceof PaymentGateway\Request\InitCommonAbstract) {
 			$request->setEncryptKey($this->config->getEncryptPublicKey());
 			$request->setExtra();
 		}
