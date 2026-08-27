@@ -17,6 +17,7 @@ use Nevogate\PaymentGateway;
  * @property string $moduleName
  * @property string $moduleVersion
  * @property string $gatewayProxy
+ * @property bool $debugCommunication
  */
 class Config
 {
