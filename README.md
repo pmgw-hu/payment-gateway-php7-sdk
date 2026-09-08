@@ -50,6 +50,7 @@ $config->storeName = "example store name";
 $config->apiKey = "ExamPleApiKey";
 $config->encryptPublicKey = "publicKeyGoesHere";
 $config->testMode = true;
+$config->debugCommunication = true; // Get info about the communication (curl) with the payment gateway
 
 $paymentGateway = new \Nevogate\PaymentGateway($config);
 ```

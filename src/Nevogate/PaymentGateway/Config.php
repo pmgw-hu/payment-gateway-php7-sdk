@@ -17,6 +17,7 @@ use Nevogate\PaymentGateway;
  * @property string $moduleName
  * @property string $moduleVersion
  * @property string $gatewayProxy
+ * @property bool $debugCommunication
  */
 class Config
 {
@@ -132,6 +133,13 @@ XIm63iVw6gjP2qDnNwIDAQAB
 	protected $gatewayProxy = '';
 
 	/**
+	 * Add debug information to the Response object
+	 *
+	 * @var bool
+	 */
+	protected $debugCommunication = false;
+
+	/**
 	 * @return bool
 	 */
 	public function isTestMode(): bool
@@ -190,6 +198,11 @@ XIm63iVw6gjP2qDnNwIDAQAB
 
 		return static::API_URL_PRODUCTION;
 	}
+
+    public function isDebugCommunication(): bool
+    {
+        return $this->debugCommunication;
+    }
 
 	/**
 	 * @param string $name
